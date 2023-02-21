@@ -6,17 +6,8 @@ from PyQt6.QtGui import *
 from Transformer import *
 from SaveLoad import SaveLoad
 from FEMM_generator import File_format
-import json
 
-#!!!!!TODO!!!!! W napięciu wyjściowym dodać helpa o układzie zastępczym prostownika Robert L. Steigerwald
-#https://www.youtube.com/watch?v=-P-tDMr50mk
 
-#TODO opisać relatywną przenikalność jako średnia
-#TODO default values for some params
-#TODO do helpa voltosekundy zmienic tylko wzmiankę o asymmetric
-#TODO jednoski jako lista by nie wpisywać 0.00004 itp
-#TODO przejrzeć excela i dodać niektóre pola
-#TODO Dodać współczynnik sprzężenia uzwojeń
 class MainClass(QMainWindow, gui.Ui_MainWindow):
     def __init__(self):
         super().__init__()
@@ -121,11 +112,11 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
             if name:
                 if not name.find('.*'):
                     name = name + '.FEE'
-            #try:
-            self.Transformer.validate_dimensions()
-            self.FEMMmodel.CreateFEMMfile(self.Transformer, name)
-            #except Exception as inst:
-                #print(inst.args)
+            try:
+                self.Transformer.validate_dimensions()
+                self.FEMMmodel.CreateFEMMfile(self.Transformer, name)
+            except Exception as inst:
+                print(inst.args)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

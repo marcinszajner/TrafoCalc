@@ -143,11 +143,6 @@ class FEMMElectrostaticFormat:
         InsideNode1_1_corX = round((SizeA - SizeB) / 2, 6)
         InsideNode1_1_corY = round(SizeD - SizeE, 6)
         distance_tmp = round((SizeB - SizeC) / 2, 6)
-        # InsideNodes1 = []
-        # InsideNodes1.append([InsideNode1_1_corX, InsideNode1_1_corY, 0, 0, 1])
-        # InsideNodes1.append([InsideNode1_1_corX + distance_tmp, InsideNode1_1_corY, 0, 0, 1])
-        # InsideNodes1.append([InsideNode1_1_corX + distance_tmp, InsideNode1_1_corY + (2 * SizeE), 0, 0, 1])
-        # InsideNodes1.append([InsideNode1_1_corX, InsideNode1_1_corY + (2 * SizeE), 0, 0, 1])
 
         self.WindingBoundary['x_left'] = InsideNode1_1_corX
         self.WindingBoundary['x_right'] = InsideNode1_1_corX + distance_tmp
@@ -198,16 +193,6 @@ class FEMMElectrostaticFormat:
         OutsideSegments.append([SegmentNum, 0, -1, 0, 0, 0, 0])
         SegmentNum += 1
 
-        # index = 0
-        # InsideSegments1 = []
-        # first_element = SegmentNum
-        # while index < self.InsideNodesNum1 - 1:
-        #     InsideSegments1.append([SegmentNum, SegmentNum + 1, -1, 0, 0, 0, 1])
-        #     index += 1
-        #     SegmentNum += 1
-        # InsideSegments1.append([SegmentNum, first_element, -1, 0, 0, 0, 1])
-        # SegmentNum += 1
-
         index = 0
         first_element = SegmentNum
         InsideSegments2 = []
@@ -228,7 +213,6 @@ class FEMMElectrostaticFormat:
         FrameSegments.append([SegmentNum, first_element, -1, 0, 0, 0, 0])
 
         self.Segments += OutsideSegments
-        # self.Segments += InsideSegments1
         self.Segments += InsideSegments2
         self.Segments += FrameSegments
 
@@ -291,7 +275,6 @@ class FEMMElectrostaticFormat:
         y_down += BobbinY + input_data.Margine
         x_right -= BobbinX
 
-        node_number = len(self.Nodes)
         wireNum = 0
 
         block_number = self.search_block_number(input_data.PrimaryWindingMaterial + '_primary')
@@ -333,8 +316,6 @@ class FEMMElectrostaticFormat:
                 node_number = len(self.Nodes)
 
                 x = x - insulation_thickness
-                # y = y_down + margin * 2\
-                #     + (margin * current_winding_y_pos) + (dia * current_winding_y_pos) + (dia / 2)
                 self.Nodes.append([x, y, 0, 0, wireNum + 1])
                 self.Nodes.append([x - dia, y, 0, 0, wireNum + 1])
                 self.ArcSegments.append([node_number, node_number + 1, 180, 1, 0, 0, 0, wireNum + 1, 1])
