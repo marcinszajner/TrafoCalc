@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/Help_items/VoltSecond/">
+    <file>VoltSecond1.jpg</file>
+    <file>VoltSecond2.jpg</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="Help_items">
+    <file>Input_voltage_help.jpg</file>
+  </qresource>
+</RCC>
