@@ -233,14 +233,12 @@ class FEMMElectrostaticFormat:
         self.Segments += FrameSegments
 
     def create_material_block(self, material_name, permittivity):
-        result = self.search_block_number(material_name)
-        if result == -1:
-            block = BlockPropsClass()
-            block.Block_dict["<BlockName> = "] = '"' + material_name + '"'
-            block.Block_dict["<ex> = "] = permittivity
-            block.Block_dict["<ey> = "] = permittivity
-            block.Block_dict["<qv> = "] = 0
-            self.Blocks.append(block.Block_dict)
+        block = BlockPropsClass()
+        block.Block_dict["<BlockName> = "] = '"' + material_name + '"'
+        block.Block_dict["<ex> = "] = permittivity
+        block.Block_dict["<ey> = "] = permittivity
+        block.Block_dict["<qv> = "] = 0
+        self.Blocks.append(block.Block_dict)
 
     def create_conductor_block(self, Conductor_name, voltage):
         Conductor_block = BlockConductorPropsClass()
@@ -296,7 +294,7 @@ class FEMMElectrostaticFormat:
         node_number = len(self.Nodes)
         wireNum = 0
 
-        block_number = self.search_block_number(input_data.PrimaryWindingMaterial)
+        block_number = self.search_block_number(input_data.PrimaryWindingMaterial + '_primary')
         if block_number == -1:
             raise Exception('failed search block')
         block_number_insulation = self.search_block_number('Primary_wire_insulation')
@@ -321,7 +319,7 @@ class FEMMElectrostaticFormat:
                 x = x_right - margin * 2 - ((4 * margin + layer_thickness) * current_winding_x_pos)\
                     - (dia_insulation * current_winding_x_pos)
                 y = y_down + margin * 2 + (margin * current_winding_y_pos)\
-                    + (dia_insulation * current_winding_y_pos) + (dia_insulation / 2)
+                    + (dia_insulation * current_winding_y_pos) + (dia / 2)
                 self.Nodes.append([x, y, 0, 0, 0])
                 self.Nodes.append([x - (dia_insulation / 2), y + (dia_insulation / 2), 0, 0, 0])
                 self.Nodes.append([x - dia_insulation, y, 0, 0, 0])
@@ -393,15 +391,15 @@ class FEMMElectrostaticFormat:
                                    input_data.BetweenWireLayerInsulationMaterialPermittivity)
         self.create_material_block(input_data.BobbinMaterial,
                                    input_data.BobbinMaterialPermittivity)
-        self.create_material_block(input_data.PrimaryWireInsulationName,
+        self.create_material_block('Primary_wire_insulation',
                                    input_data.PrimaryWireInsulationMaterialPermittivity)
-        self.create_material_block(input_data.SecondaryWireInsulationName,
+        self.create_material_block('Secondary_wire_insulation',
                                    input_data.SecondaryWireInsulationMaterialPermittivity)
         self.create_material_block('Air', 1)
 
-        self.create_material_block(input_data.PrimaryWindingMaterial, 1)
+        self.create_material_block(input_data.PrimaryWindingMaterial + '_primary', 1)
 
-        self.create_material_block(input_data.SecondaryWindingMaterial, 1)
+        self.create_material_block(input_data.SecondaryWindingMaterial + '_secondary', 1)
         #self.create_conductor_block('Primary', output_data.MagnetizationCurrentMax)
 
         if input_data.CoreShape == 'EE':
