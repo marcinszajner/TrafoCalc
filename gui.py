@@ -383,16 +383,16 @@ class Ui_MainWindow(object):
         self.InductanceLabel.setGeometry(QtCore.QRect(30, 30, 91, 16))
         self.InductanceLabel.setObjectName("InductanceLabel")
         self.CurrentMaxLabel = QtWidgets.QLabel(self.groupBox)
-        self.CurrentMaxLabel.setGeometry(QtCore.QRect(30, 70, 81, 16))
+        self.CurrentMaxLabel.setGeometry(QtCore.QRect(30, 70, 91, 16))
         self.CurrentMaxLabel.setObjectName("CurrentMaxLabel")
         self.BmaxInductanceLabel = QtWidgets.QLabel(self.groupBox)
-        self.BmaxInductanceLabel.setGeometry(QtCore.QRect(30, 110, 47, 13))
+        self.BmaxInductanceLabel.setGeometry(QtCore.QRect(30, 110, 81, 16))
         self.BmaxInductanceLabel.setObjectName("BmaxInductanceLabel")
         self.CoreCrossSectionInductanceLabel = QtWidgets.QLabel(self.groupBox)
         self.CoreCrossSectionInductanceLabel.setGeometry(QtCore.QRect(30, 180, 101, 31))
         self.CoreCrossSectionInductanceLabel.setObjectName("CoreCrossSectionInductanceLabel")
         self.WindingNumInductanceLabel = QtWidgets.QLabel(self.groupBox)
-        self.WindingNumInductanceLabel.setGeometry(QtCore.QRect(270, 30, 91, 16))
+        self.WindingNumInductanceLabel.setGeometry(QtCore.QRect(270, 20, 91, 31))
         self.WindingNumInductanceLabel.setObjectName("WindingNumInductanceLabel")
         self.GapLabel = QtWidgets.QLabel(self.groupBox)
         self.GapLabel.setGeometry(QtCore.QRect(270, 70, 81, 31))
@@ -435,7 +435,7 @@ class Ui_MainWindow(object):
         self.PrimaryWireCrosSectionlabel_2.setGeometry(QtCore.QRect(30, 250, 101, 51))
         self.PrimaryWireCrosSectionlabel_2.setObjectName("PrimaryWireCrosSectionlabel_2")
         self.FrequencyInductorLabel = QtWidgets.QLabel(self.groupBox)
-        self.FrequencyInductorLabel.setGeometry(QtCore.QRect(30, 150, 47, 13))
+        self.FrequencyInductorLabel.setGeometry(QtCore.QRect(30, 150, 91, 16))
         self.FrequencyInductorLabel.setObjectName("FrequencyInductorLabel")
         self.FrequencyInductanceValue = QtWidgets.QLineEdit(self.groupBox)
         self.FrequencyInductanceValue.setGeometry(QtCore.QRect(140, 150, 113, 20))
@@ -476,7 +476,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.basic.setTitle(_translate("MainWindow", "Required params"))
+        self.basic.setTitle(_translate("MainWindow", "Tranformator input data"))
         self.FillFactorLabel.setText(_translate("MainWindow", "Fill Factor\n"
 "(0<x<1)"))
         self.MagneticPathLengthLabel.setText(_translate("MainWindow", "Magnetic Path\n"
@@ -534,7 +534,7 @@ class Ui_MainWindow(object):
 "insulation material"))
         self.PrimaryWireInsulationNameValue.setText(_translate("MainWindow", "polyesterimide primary"))
         self.SecondaryWireInsulationNameValue.setText(_translate("MainWindow", "polyesterimide  secondary"))
-        self.output.setTitle(_translate("MainWindow", "Output data"))
+        self.output.setTitle(_translate("MainWindow", "transformator output data"))
         self.SecondaryWireCrossSectionSelectedlabel.setText(_translate("MainWindow", "Secondary wire\n"
 "cross section\n"
 "Selected (mm^2)"))
@@ -575,13 +575,14 @@ class Ui_MainWindow(object):
         self.PrimaryWindingMaterialValue.setText(_translate("MainWindow", "Copper primary"))
         self.CoreConductivityLabel.setText(_translate("MainWindow", "Core relative\n"
 "Conductivity (σr)"))
-        self.groupBox.setTitle(_translate("MainWindow", "GroupBox"))
-        self.InductanceLabel.setText(_translate("MainWindow", "Inductance [H]"))
+        self.groupBox.setTitle(_translate("MainWindow", "Inductor params"))
+        self.InductanceLabel.setText(_translate("MainWindow", "Inductance [mH]"))
         self.CurrentMaxLabel.setText(_translate("MainWindow", "Current max [A]"))
         self.BmaxInductanceLabel.setText(_translate("MainWindow", "Bmax [mT]"))
         self.CoreCrossSectionInductanceLabel.setText(_translate("MainWindow", "Core  Cross-Section\n"
 "[mm^2]"))
-        self.WindingNumInductanceLabel.setText(_translate("MainWindow", "Winding number"))
+        self.WindingNumInductanceLabel.setText(_translate("MainWindow", "Winding\n"
+"number"))
         self.GapLabel.setText(_translate("MainWindow", "Middle column\n"
 "gap [mm]"))
         self.label_2.setText(_translate("MainWindow", "Current density\n"

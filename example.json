@@ -44,7 +44,7 @@
     "BetweenWireLayerInsulationMaterialPermittivity": 3.9,
     "Margine": 1.0,
     "BetweenWireLayerInsulationThickness": 0.2,
-    "Inductance": 5e-05,
+    "Inductance": 0.05,
     "CurrentMax": 10.0,
     "BmaxInductance": 50.0,
     "CoreCrossSectionInductance": 357.0,

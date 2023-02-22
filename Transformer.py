@@ -195,10 +195,10 @@ class Transformer:
             raise Exception('incorrect dimension of param')
 
     def Calculate_inductance(self):
-        ind = self.TransformerValue.Inductance
+        ind = self.TransformerValue.Inductance / 1000
         curr = self.TransformerValue.CurrentMax
         Bmax = self.TransformerValue.BmaxInductance / 1000
-        uo = 0.00000012563706
+        uo = 0.0000012563706
         Ae = self.TransformerValue.CoreCrossSectionInductance / 1000000
         curr_dens = self.TransformerValue.CurrentDensityInductance
 

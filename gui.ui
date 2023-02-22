@@ -104,7 +104,7 @@
           </rect>
          </property>
          <property name="title">
-          <string>Required params</string>
+          <string>Tranformator input data</string>
          </property>
          <widget class="QLabel" name="FillFactorLabel">
           <property name="geometry">
@@ -958,7 +958,7 @@ insulation material</string>
           </rect>
          </property>
          <property name="title">
-          <string>Output data</string>
+          <string>transformator output data</string>
          </property>
          <widget class="QLabel" name="SecondaryWireCrossSectionSelectedlabel">
           <property name="geometry">
@@ -1439,7 +1439,7 @@ Conductivity (σr)</string>
           </rect>
          </property>
          <property name="title">
-          <string>GroupBox</string>
+          <string>Inductor params</string>
          </property>
          <widget class="QLabel" name="InductanceLabel">
           <property name="geometry">
@@ -1451,7 +1451,7 @@ Conductivity (σr)</string>
            </rect>
           </property>
           <property name="text">
-           <string>Inductance [H]</string>
+           <string>Inductance [mH]</string>
           </property>
          </widget>
          <widget class="QLabel" name="CurrentMaxLabel">
@@ -1459,7 +1459,7 @@ Conductivity (σr)</string>
            <rect>
             <x>30</x>
             <y>70</y>
-            <width>81</width>
+            <width>91</width>
             <height>16</height>
            </rect>
           </property>
@@ -1472,8 +1472,8 @@ Conductivity (σr)</string>
            <rect>
             <x>30</x>
             <y>110</y>
-            <width>47</width>
-            <height>13</height>
+            <width>81</width>
+            <height>16</height>
            </rect>
           </property>
           <property name="text">
@@ -1498,13 +1498,14 @@ Conductivity (σr)</string>
           <property name="geometry">
            <rect>
             <x>270</x>
-            <y>30</y>
+            <y>20</y>
             <width>91</width>
-            <height>16</height>
+            <height>31</height>
            </rect>
           </property>
           <property name="text">
-           <string>Winding number</string>
+           <string>Winding
+number</string>
           </property>
          </widget>
          <widget class="QLabel" name="GapLabel">
@@ -1662,8 +1663,8 @@ section (mm^2)</string>
            <rect>
             <x>30</x>
             <y>150</y>
-            <width>47</width>
-            <height>13</height>
+            <width>91</width>
+            <height>16</height>
            </rect>
           </property>
           <property name="text">
