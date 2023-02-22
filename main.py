@@ -45,47 +45,63 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
         return transformer_value
 
     def run_calc(self):
-        try:
+        #try:
             transformer_value = self.parse_main_window_value_to_transformer_class()
             self.Transformer.update_params(transformer_value)
-            self.Transformer.validate_input_data_basic_simulation()
-            self.Transformer.Calculate_winding_number()
-            self.Transformer.Calculate_magnetization_current()
-            self.Transformer.Calculate_wire_cross_section()
-            self.Transformer.Calculate_Ap()
-        except Exception as inst:
-            print(inst.args)
+            if self.Transformer.TransformerValue.ModelType == 'Magnetic field simulation'or \
+               self.Transformer.TransformerValue.ModelType == 'Electrostatic field simulation':
 
-        SelectedColour = QPalette()
-        DeselectedColour = QPalette()
-        SelectedColour.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Base, QColor(51, 240, 65))
-        DeselectedColour.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Base, QColor(255, 255, 255))
-        if float(self.PrimaryWindingSelectedValue.text()) > 0:
-            self.PrimaryWindingSelectedValue.setPalette(SelectedColour)
-        else:
-            self.PrimaryWindingSelectedValue.setPalette(DeselectedColour)
+                self.Transformer.validate_input_data_basic_simulation()
+                self.Transformer.Calculate_winding_number()
+                self.Transformer.Calculate_magnetization_current()
+                self.Transformer.Calculate_wire_cross_section()
+                self.Transformer.Calculate_Ap()
 
-        if float(self.PrimaryWindingSelectedValue.text()):
-            self.PrimaryWindingSelectedValue.setPalette(SelectedColour)
-        else:
-            self.PrimaryWindingSelectedValue.setPalette(DeselectedColour)
+                SelectedColour = QPalette()
+                DeselectedColour = QPalette()
+                SelectedColour.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Base, QColor(51, 240, 65))
+                DeselectedColour.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Base, QColor(255, 255, 255))
+                if float(self.PrimaryWindingSelectedValue.text()) > 0:
+                    self.PrimaryWindingSelectedValue.setPalette(SelectedColour)
+                else:
+                    self.PrimaryWindingSelectedValue.setPalette(DeselectedColour)
 
-        transformer_output_value = self.Transformer.TransformerOutputValue
-        a = vars(transformer_output_value)
-        name = 'Value'
-        for key, value in a.items():
-            data = getattr(transformer_output_value , key)
-            main_menu_transformer_values = getattr(self, key + name)
-            main_menu_transformer_values.setText(str(float("{:.5e}".format(data))))
+                if float(self.PrimaryWindingSelectedValue.text()):
+                    self.PrimaryWindingSelectedValue.setPalette(SelectedColour)
+                else:
+                    self.PrimaryWindingSelectedValue.setPalette(DeselectedColour)
 
-        result_palette = QPalette()
-        if float(self.ApCalculatedValue.text()) >= float(self.ApTheoryValue.text()):
-            result_palette.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.WindowText, QColor(240, 51, 65))
-            self.ApResultLabel.setText('Fail')
-        else:
-            result_palette.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.WindowText, QColor(51, 240, 65))
-            self.ApResultLabel.setText('Pass')
-        self.ApResultLabel.setPalette(result_palette)
+                transformer_output_value = self.Transformer.TransformerOutputValue
+                a = vars(transformer_output_value)
+                name = 'Value'
+                for key, value in a.items():
+                    data = getattr(transformer_output_value, key)
+                    main_menu_transformer_values = getattr(self, key + name)
+                    main_menu_transformer_values.setText(str(float("{:.5e}".format(data))))
+
+                result_palette = QPalette()
+                if float(self.ApCalculatedValue.text()) >= float(self.ApTheoryValue.text()):
+                    result_palette.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.WindowText,
+                                            QColor(240, 51, 65))
+                    self.ApResultLabel.setText('Fail')
+                else:
+                    result_palette.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.WindowText,
+                                            QColor(51, 240, 65))
+                    self.ApResultLabel.setText('Pass')
+                self.ApResultLabel.setPalette(result_palette)
+            elif self.Transformer.TransformerValue.ModelType == 'Inductance':
+                self.Transformer.Calculate_inductance()
+                WindingNumber = self.Transformer.TransformerValue.WindingNumInductance
+                gap = self.Transformer.TransformerValue.Gap
+                cross_section = self.Transformer.TransformerValue.PrimaryWireCrossSectionInductance
+                self.WindingNumInductanceValue.setText(str(float("{:.5e}".format(WindingNumber))))
+                self.WireCrossSectionInductanceValue.setText(str(float("{:.5e}".format(cross_section))))
+                self.GapValue.setText(str(float("{:.5e}".format(gap))))
+
+        #except Exception as inst:
+        #    print(inst.args)
+
+
 
     def save_state(self):
         transformer_value = self.parse_main_window_value_to_transformer_class()
@@ -100,7 +116,8 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
     def save_FEMM_model(self):
         self.run_calc()
 
-        if self.Transformer.TransformerValue.ModelType == 'Magnetic field simulation':
+        if self.Transformer.TransformerValue.ModelType == 'Magnetic field simulation' or\
+                self.Transformer.TransformerValue.ModelType == 'Inductance':
             name, _ = QFileDialog.getSaveFileName(self, 'Save file', '', 'FEMM(*.FEM);;all Files(*)')
             if name:
                 if not name.find('.*'):

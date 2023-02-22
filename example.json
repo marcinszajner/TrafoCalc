@@ -33,7 +33,7 @@
     "CoreMaterialName": "3f3",
     "BobbinXmargine": 2.0,
     "BobbinYmargine": 2.0,
-    "ModelType": "Magnetic field simulation",
+    "ModelType": "Inductance",
     "PrimaryWindingMaterial": "Copper",
     "PrimaryWindingMaterialConductivity": 58000000.0,
     "SecondaryWindingMaterial": "Copper",
@@ -43,5 +43,16 @@
     "BetweenWireLayerInsulationMaterial": "Kapton 100",
     "BetweenWireLayerInsulationMaterialPermittivity": 3.9,
     "Margine": 1.0,
-    "BetweenWireLayerInsulationThickness": 0.2
+    "BetweenWireLayerInsulationThickness": 0.2,
+    "Inductance": 5e-05,
+    "CurrentMax": 10.0,
+    "BmaxInductance": 50.0,
+    "CoreCrossSectionInductance": 357.0,
+    "WindingNumInductance": 28.0112,
+    "Gap": 0.703849,
+    "CurrentDensityInductance": 4.5,
+    "WireCrossSectionInductance": 2.22222,
+    "WireCrossSectionSelectedInductance": 0.0,
+    "FrequencyInductance": 100000.0,
+    "PrimaryWireCrossSectionInductance": 2.2222222222222223
 }

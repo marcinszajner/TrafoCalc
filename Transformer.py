@@ -55,6 +55,18 @@ class TransformerValueClass:
         self.Margine = 0
         self.BetweenWireLayerInsulationThickness = 0
 
+        #inductor params
+        self.Inductance = 0
+        self.CurrentMax = 0
+        self.BmaxInductance = 0
+        self.CoreCrossSectionInductance = 0
+        self.WindingNumInductance = 0
+        self.Gap = 0
+        self.CurrentDensityInductance = 0
+        self.WireCrossSectionInductance = 0
+        self.WireCrossSectionSelectedInductance = 0
+        self.FrequencyInductance = 0
+
 
 class TransformerOutputValueClass:
     def __init__(self):
@@ -181,3 +193,20 @@ class Transformer:
                 self.TransformerValue.SizeC > 0.0 and self.TransformerValue.SizeD > 0.0 and
                 self.TransformerValue.SizeE > 0.0 and self.TransformerValue.SizeF):
             raise Exception('incorrect dimension of param')
+
+    def Calculate_inductance(self):
+        ind = self.TransformerValue.Inductance
+        curr = self.TransformerValue.CurrentMax
+        Bmax = self.TransformerValue.BmaxInductance / 1000
+        uo = 0.00000012563706
+        Ae = self.TransformerValue.CoreCrossSectionInductance / 1000000
+        curr_dens = self.TransformerValue.CurrentDensityInductance
+
+        cross_section = curr / curr_dens
+
+        N = (ind * curr)/(Ae * Bmax)
+        lg = (uo * N * curr)/Bmax
+
+        self.TransformerValue.Gap = lg * 1000
+        self.TransformerValue.WindingNumInductance = N
+        self.TransformerValue.PrimaryWireCrossSectionInductance = cross_section

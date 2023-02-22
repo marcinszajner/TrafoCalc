@@ -100,7 +100,7 @@
            <x>10</x>
            <y>10</y>
            <width>251</width>
-           <height>501</height>
+           <height>491</height>
           </rect>
          </property>
          <property name="title">
@@ -416,7 +416,7 @@ area [mm^2]</string>
          <property name="geometry">
           <rect>
            <x>270</x>
-           <y>210</y>
+           <y>200</y>
            <width>761</width>
            <height>301</height>
           </rect>
@@ -952,9 +952,9 @@ insulation material</string>
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>510</y>
+           <y>500</y>
            <width>361</width>
-           <height>291</height>
+           <height>301</height>
           </rect>
          </property>
          <property name="title">
@@ -1429,6 +1429,258 @@ Conductivity (σr)</string>
           </property>
          </widget>
         </widget>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="geometry">
+          <rect>
+           <x>380</x>
+           <y>500</y>
+           <width>621</width>
+           <height>301</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>GroupBox</string>
+         </property>
+         <widget class="QLabel" name="InductanceLabel">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>30</y>
+            <width>91</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Inductance [H]</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="CurrentMaxLabel">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>70</y>
+            <width>81</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Current max [A]</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="BmaxInductanceLabel">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>110</y>
+            <width>47</width>
+            <height>13</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Bmax [mT]</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="CoreCrossSectionInductanceLabel">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>180</y>
+            <width>101</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Core  Cross-Section
+[mm^2]</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="WindingNumInductanceLabel">
+          <property name="geometry">
+           <rect>
+            <x>270</x>
+            <y>30</y>
+            <width>91</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Winding number</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="GapLabel">
+          <property name="geometry">
+           <rect>
+            <x>270</x>
+            <y>70</y>
+            <width>81</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Middle column
+gap [mm]</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="CoreCrossSectionInductanceValue">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>190</y>
+            <width>113</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="BmaxInductanceValue">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>110</y>
+            <width>113</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="CurrentMaxValue">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>70</y>
+            <width>113</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="InductanceValue">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>30</y>
+            <width>113</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="WindingNumInductanceValue">
+          <property name="geometry">
+           <rect>
+            <x>360</x>
+            <y>30</y>
+            <width>113</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="GapValue">
+          <property name="geometry">
+           <rect>
+            <x>360</x>
+            <y>70</y>
+            <width>113</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_2">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>220</y>
+            <width>81</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Current density
+[A/mm^2]</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="CurrentDensityInductanceValue">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>230</y>
+            <width>113</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="PrimaryWireCrossSectionSelectedlabel_2">
+          <property name="geometry">
+           <rect>
+            <x>270</x>
+            <y>250</y>
+            <width>101</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Wire
+cross section
+Selected (mm^2)</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="WireCrossSectionSelectedInductanceValue">
+          <property name="geometry">
+           <rect>
+            <x>370</x>
+            <y>270</y>
+            <width>101</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="WireCrossSectionInductanceValue">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>270</y>
+            <width>111</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="PrimaryWireCrosSectionlabel_2">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>250</y>
+            <width>101</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Wire cross
+section (mm^2)</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="FrequencyInductorLabel">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>150</y>
+            <width>47</width>
+            <height>13</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Frequency [Hz]</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="FrequencyInductanceValue">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>150</y>
+            <width>113</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
        </widget>
       </item>
      </layout>
@@ -1464,6 +1716,11 @@ Conductivity (σr)</string>
     <item>
      <property name="text">
       <string>Magnetic field simulation</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Inductance</string>
      </property>
     </item>
    </widget>

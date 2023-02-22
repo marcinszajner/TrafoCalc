@@ -1,6 +1,7 @@
 from Transformer import Transformer
 from FEMM_generator import Magnetic
 from FEMM_generator import Electrostatic
+from FEMM_generator import Magnetic_inductor
 
 
 class FEMMmodelclass:
@@ -16,3 +17,6 @@ class FEMMmodelclass:
         elif input_data.ModelType == 'Electrostatic field simulation':
             electrostatic = Electrostatic.FEMMElectrostaticFormat()
             electrostatic.create_electrostatic_model(input_data, output_data, file_name)
+        elif input_data.ModelType == 'Inductance':
+            magnetic_inductor = Magnetic_inductor.FEMMMagneticInductorFormat()
+            magnetic_inductor.create_magnetic_inductor_model(input_data, output_data, file_name)
