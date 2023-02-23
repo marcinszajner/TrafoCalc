@@ -104,7 +104,7 @@
           </rect>
          </property>
          <property name="title">
-          <string>Tranformator input data</string>
+          <string>Tranformer input data</string>
          </property>
          <widget class="QLabel" name="FillFactorLabel">
           <property name="geometry">
@@ -169,7 +169,7 @@ Length [mm]</string>
            <rect>
             <x>20</x>
             <y>220</y>
-            <width>51</width>
+            <width>71</width>
             <height>16</height>
            </rect>
           </property>
@@ -902,7 +902,7 @@ Insulation</string>
            <rect>
             <x>10</x>
             <y>90</y>
-            <width>91</width>
+            <width>101</width>
             <height>31</height>
            </rect>
           </property>
@@ -958,7 +958,7 @@ insulation material</string>
           </rect>
          </property>
          <property name="title">
-          <string>transformator output data</string>
+          <string>Transformer output data</string>
          </property>
          <widget class="QLabel" name="SecondaryWireCrossSectionSelectedlabel">
           <property name="geometry">
@@ -1332,7 +1332,7 @@ winding material</string>
            <rect>
             <x>10</x>
             <y>30</y>
-            <width>81</width>
+            <width>91</width>
             <height>31</height>
            </rect>
           </property>
@@ -1399,7 +1399,7 @@ winding material</string>
            <rect>
             <x>10</x>
             <y>60</y>
-            <width>81</width>
+            <width>91</width>
             <height>31</height>
            </rect>
           </property>
@@ -1703,9 +1703,9 @@ section (mm^2)</string>
    <widget class="QComboBox" name="ModelTypeValue">
     <property name="geometry">
      <rect>
-      <x>630</x>
+      <x>620</x>
       <y>30</y>
-      <width>151</width>
+      <width>181</width>
       <height>22</height>
      </rect>
     </property>

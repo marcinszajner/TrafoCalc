@@ -62,7 +62,7 @@ class Ui_MainWindow(object):
         self.MagneticPathLengthLabel.setGeometry(QtCore.QRect(20, 370, 81, 31))
         self.MagneticPathLengthLabel.setObjectName("MagneticPathLengthLabel")
         self.BmaxLabel = QtWidgets.QLabel(self.basic)
-        self.BmaxLabel.setGeometry(QtCore.QRect(20, 220, 51, 16))
+        self.BmaxLabel.setGeometry(QtCore.QRect(20, 220, 71, 16))
         self.BmaxLabel.setObjectName("BmaxLabel")
         self.CoreMaterialNameValue = QtWidgets.QLineEdit(self.basic)
         self.CoreMaterialNameValue.setGeometry(QtCore.QRect(130, 260, 81, 20))
@@ -246,7 +246,7 @@ class Ui_MainWindow(object):
         self.PrimaryWireInsulationThicknessValue.setGeometry(QtCore.QRect(340, 130, 61, 20))
         self.PrimaryWireInsulationThicknessValue.setObjectName("PrimaryWireInsulationThicknessValue")
         self.BetweenWireInsulationMaterialLabel = QtWidgets.QLabel(self.InsulationGroup)
-        self.BetweenWireInsulationMaterialLabel.setGeometry(QtCore.QRect(10, 90, 91, 31))
+        self.BetweenWireInsulationMaterialLabel.setGeometry(QtCore.QRect(10, 90, 101, 31))
         self.BetweenWireInsulationMaterialLabel.setObjectName("BetweenWireInsulationMaterialLabel")
         self.BobbinMaterialPermittivityValue = QtWidgets.QLineEdit(self.InsulationGroup)
         self.BobbinMaterialPermittivityValue.setGeometry(QtCore.QRect(270, 70, 51, 20))
@@ -353,7 +353,7 @@ class Ui_MainWindow(object):
         self.PrimaryWindingMaterialConductivityValue.setGeometry(QtCore.QRect(230, 120, 71, 20))
         self.PrimaryWindingMaterialConductivityValue.setObjectName("PrimaryWindingMaterialConductivityValue")
         self.CorePermittivityLabel = QtWidgets.QLabel(self.AdditionalGroup)
-        self.CorePermittivityLabel.setGeometry(QtCore.QRect(10, 30, 81, 31))
+        self.CorePermittivityLabel.setGeometry(QtCore.QRect(10, 30, 91, 31))
         self.CorePermittivityLabel.setObjectName("CorePermittivityLabel")
         self.SecondaryWindingMaterialValue = QtWidgets.QLineEdit(self.AdditionalGroup)
         self.SecondaryWindingMaterialValue.setGeometry(QtCore.QRect(100, 150, 113, 20))
@@ -368,7 +368,7 @@ class Ui_MainWindow(object):
         self.PrimaryWindingMaterialValue.setGeometry(QtCore.QRect(100, 120, 113, 20))
         self.PrimaryWindingMaterialValue.setObjectName("PrimaryWindingMaterialValue")
         self.CoreConductivityLabel = QtWidgets.QLabel(self.AdditionalGroup)
-        self.CoreConductivityLabel.setGeometry(QtCore.QRect(10, 60, 81, 31))
+        self.CoreConductivityLabel.setGeometry(QtCore.QRect(10, 60, 91, 31))
         self.CoreConductivityLabel.setObjectName("CoreConductivityLabel")
         self.CoreConductivityValue = QtWidgets.QLineEdit(self.AdditionalGroup)
         self.CoreConductivityValue.setGeometry(QtCore.QRect(100, 70, 61, 20))
@@ -446,7 +446,7 @@ class Ui_MainWindow(object):
         self.RunButton.setGeometry(QtCore.QRect(410, 22, 111, 41))
         self.RunButton.setObjectName("RunButton")
         self.ModelTypeValue = QtWidgets.QComboBox(self.centralwidget)
-        self.ModelTypeValue.setGeometry(QtCore.QRect(630, 30, 151, 22))
+        self.ModelTypeValue.setGeometry(QtCore.QRect(620, 30, 181, 22))
         self.ModelTypeValue.setObjectName("ModelTypeValue")
         self.ModelTypeValue.addItem("")
         self.ModelTypeValue.addItem("")
@@ -476,7 +476,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.basic.setTitle(_translate("MainWindow", "Tranformator input data"))
+        self.basic.setTitle(_translate("MainWindow", "Tranformer input data"))
         self.FillFactorLabel.setText(_translate("MainWindow", "Fill Factor\n"
 "(0<x<1)"))
         self.MagneticPathLengthLabel.setText(_translate("MainWindow", "Magnetic Path\n"
@@ -534,7 +534,7 @@ class Ui_MainWindow(object):
 "insulation material"))
         self.PrimaryWireInsulationNameValue.setText(_translate("MainWindow", "polyesterimide primary"))
         self.SecondaryWireInsulationNameValue.setText(_translate("MainWindow", "polyesterimide  secondary"))
-        self.output.setTitle(_translate("MainWindow", "transformator output data"))
+        self.output.setTitle(_translate("MainWindow", "Transformer output data"))
         self.SecondaryWireCrossSectionSelectedlabel.setText(_translate("MainWindow", "Secondary wire\n"
 "cross section\n"
 "Selected (mm^2)"))
