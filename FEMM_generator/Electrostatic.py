@@ -230,7 +230,7 @@ class FEMMElectrostaticFormat:
         Conductor_block.Conductor_block_dict["<Vc> = "] = voltage
         self.ConductorProps.append(Conductor_block.Conductor_block_dict)
 
-    def create_wire_primary(self, input_data, output_data, BobbinX, BobbinY, voltage, primary_cross_section):
+    def create_wire_primary(self, input_data, output_data, BobbinX, BobbinY, voltage, primary_dia, is_simple_wire):
         x_left = self.WindingBoundary["x_left"]
         x_right = self.WindingBoundary["x_right"]
         y_down = self.WindingBoundary["y_down"]
@@ -240,9 +240,9 @@ class FEMMElectrostaticFormat:
         layer_thickness = input_data.BetweenWireLayerInsulationThickness
         insulation_thickness = input_data.PrimaryWireInsulationThickness
         if input_data.PrimaryWindingSelected > 0:
-            windingNum = input_data.PrimaryWindingSelected
+            windingNum = int(input_data.PrimaryWindingSelected)
         else:
-            windingNum = output_data.PrimaryWinding
+            windingNum = int(output_data.PrimaryWinding)
         voltage_per_winding = voltage/windingNum
         node_number = len(self.Nodes)
         # add bobbin Not needed yet
@@ -260,15 +260,15 @@ class FEMMElectrostaticFormat:
         self.Nodes.append([x_right - BobbinX, y_down + BobbinY, 0, 0, 0])
         self.Nodes.append([x_left, y_down + BobbinY, 0, 0, 0])
 
-        self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0, 0])
-        self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0, 0])
-        self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0, 0])
-        self.Segments.append([node_number + 3, node_number + 4, -1, 0, 0, 0, 0])
+        self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0, 1])
+        self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0, 1])
+        self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0, 1])
+        self.Segments.append([node_number + 3, node_number + 4, -1, 0, 0, 0, 1])
         self.Segments.append([node_number + 4, node_number + 5, -1, 0, 0, 0, 0])
         self.Segments.append([node_number + 5, node_number + 6, -1, 0, 0, 0, 0])
         self.Segments.append([node_number + 6, node_number + 7, -1, 0, 0, 0, 0])
-        self.Segments.append([node_number + 7, node_number, -1, 0, 0, 0, 0])
-        self.Segments.append([node_number + 4, node_number + 7, -1, 0, 0, 0, 0])
+        self.Segments.append([node_number + 7, node_number, -1, 0, 0, 0, 1])
+        self.Segments.append([node_number + 4, node_number + 7, -1, 0, 0, 0, 1])
         self.BlocksLabels.append([x_right - margin - (BobbinX / 2), y_down + margin + (BobbinY / 2), block_number_bobbin,
                                   -1, 1, 0, 0, 1, 1])
         y_up -= BobbinY + input_data.Margine
@@ -286,67 +286,116 @@ class FEMMElectrostaticFormat:
         block_number_layer_insulation = self.search_block_number(input_data.BetweenWireLayerInsulationMaterial)
         if block_number == -1:
             raise Exception('failed search block')
-        dia = round(math.sqrt(primary_cross_section / math.pi) * 2, 4) + 0.001
+        dia = primary_dia
         dia_insulation = dia + (2*insulation_thickness)
 
         num_of_winding_y = int((y_up - y_down) / (dia_insulation + margin)) - 1
         current_winding_y_pos = 0
         current_winding_x_pos = 0
 
-        while windingNum > wireNum:
-            while num_of_winding_y > current_winding_y_pos and windingNum > wireNum:
+        if not is_simple_wire:
+            while windingNum > wireNum:
+                while num_of_winding_y > current_winding_y_pos and windingNum > wireNum:
 
-                self.create_conductor_block('Primary' + str(wireNum), 0 + (wireNum * voltage_per_winding))
+                    self.create_conductor_block('Primary' + str(wireNum), 0 + (wireNum * voltage_per_winding))
+                    node_number = len(self.Nodes)
+
+                    x = x_right - margin * 2 - ((4 * margin + layer_thickness) * current_winding_x_pos)\
+                        - (dia_insulation * current_winding_x_pos)
+                    y = y_down + margin * 2 + (margin * current_winding_y_pos)\
+                        + (dia_insulation * current_winding_y_pos) + (dia / 2)
+                    self.Nodes.append([x, y, 0, 0, 0])
+                    self.Nodes.append([x - (dia_insulation / 2), y + (dia_insulation / 2), 0, 0, 0])
+                    self.Nodes.append([x - dia_insulation, y, 0, 0, 0])
+                    self.Nodes.append([x - (dia_insulation / 2), y - (dia_insulation / 2), 0, 0, 0])
+                    self.ArcSegments.append([node_number, node_number + 1, 90, 1, 0, 0, 0, 0, 1])
+                    self.ArcSegments.append([node_number + 1, node_number + 2, 90, 1, 0, 0, 0, 0, 1])
+                    self.ArcSegments.append([node_number + 2, node_number + 3, 90, 1, 0, 0, 0, 0, 1])
+                    self.ArcSegments.append([node_number + 3, node_number, 90, 1, 0, 0, 0, 0, 1])
+                    self.BlocksLabels.append([x - (insulation_thickness / 2), y, block_number_insulation,
+                                              -1, 1, 0, 0, 1, 1])
+                    node_number = len(self.Nodes)
+
+                    x = x - insulation_thickness
+                    self.Nodes.append([x, y, 0, 0, wireNum + 1])
+                    self.Nodes.append([x - dia, y, 0, 0, wireNum + 1])
+                    self.ArcSegments.append([node_number, node_number + 1, 180, 1, 0, 0, 0, wireNum + 1, 1])
+                    self.ArcSegments.append([node_number + 1, node_number, 180, 1, 0, 0, 0, wireNum + 1, 1])
+                    self.BlocksLabels.append([x - (dia / 2), y, block_number, -1, 1, 0, 0, 1, 1])
+
+                    current_winding_y_pos += 1
+                    wireNum += 1
+
                 node_number = len(self.Nodes)
-
-                x = x_right - margin * 2 - ((4 * margin + layer_thickness) * current_winding_x_pos)\
-                    - (dia_insulation * current_winding_x_pos)
-                y = y_down + margin * 2 + (margin * current_winding_y_pos)\
-                    + (dia_insulation * current_winding_y_pos) + (dia / 2)
-                self.Nodes.append([x, y, 0, 0, 0])
-                self.Nodes.append([x - (dia_insulation / 2), y + (dia_insulation / 2), 0, 0, 0])
-                self.Nodes.append([x - dia_insulation, y, 0, 0, 0])
-                self.Nodes.append([x - (dia_insulation / 2), y - (dia_insulation / 2), 0, 0, 0])
-                self.ArcSegments.append([node_number, node_number + 1, 90, 1, 0, 0, 0, 0, 1])
-                self.ArcSegments.append([node_number + 1, node_number + 2, 90, 1, 0, 0, 0, 0, 1])
-                self.ArcSegments.append([node_number + 2, node_number + 3, 90, 1, 0, 0, 0, 0, 1])
-                self.ArcSegments.append([node_number + 3, node_number, 90, 1, 0, 0, 0, 0, 1])
-                self.BlocksLabels.append([x - (insulation_thickness / 2), y, block_number_insulation,
+                self.Nodes.append([x - dia_insulation, y_down + margin - input_data.Margine, 0, 0, wireNum + 1])
+                self.Nodes.append([x - dia_insulation, y_up - margin + input_data.Margine, 0, 0, wireNum + 1])
+                self.Nodes.append([x - dia_insulation - layer_thickness, y_up - margin + input_data.Margine,
+                                   0, 0, wireNum + 1])
+                self.Nodes.append([x - dia_insulation - layer_thickness, y_down + margin - input_data.Margine,
+                                   0, 0, wireNum + 1])
+                self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0, 0])
+                self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0, 0])
+                self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0, 0])
+                self.Segments.append([node_number + 3, node_number, -1, 0, 0, 0, 0])
+                self.BlocksLabels.append([x - dia_insulation - margin - (layer_thickness / 2),
+                                          (y_up - y_down) / 2, block_number_layer_insulation,
                                           -1, 1, 0, 0, 1, 1])
+
+                current_winding_x_pos += 1
+                current_winding_y_pos = 0
+        else:
+            first_x = x_right - margin * 2
+            first_y = y_down + margin * 2
+            self.create_conductor_block('Primary' + str(0),
+                                        0 + (current_winding_x_pos * voltage_per_winding * num_of_winding_y))
+            while windingNum > wireNum:
+                while num_of_winding_y > current_winding_y_pos and windingNum > wireNum:
+                    current_winding_y_pos += 1
+                    wireNum += 1
+
+                x = first_x - ((4 * margin + layer_thickness) * current_winding_x_pos) \
+                    - (dia_insulation * current_winding_x_pos)
+                y = y_down + margin * 2 + (margin * current_winding_y_pos) \
+                    + (dia_insulation * current_winding_y_pos)
+
                 node_number = len(self.Nodes)
+                self.Nodes.append([x, first_y, 0, 0, current_winding_x_pos + 1])
+                self.Nodes.append([x, y, 0, 0, current_winding_x_pos + 1])
+                self.Nodes.append([x - dia_insulation, y, 0, 0, current_winding_x_pos + 1])
+                self.Nodes.append([x - dia_insulation, first_y, 0, 0, current_winding_x_pos + 1])
 
-                x = x - insulation_thickness
-                self.Nodes.append([x, y, 0, 0, wireNum + 1])
-                self.Nodes.append([x - dia, y, 0, 0, wireNum + 1])
-                self.ArcSegments.append([node_number, node_number + 1, 180, 1, 0, 0, 0, wireNum + 1, 1])
-                self.ArcSegments.append([node_number + 1, node_number, 180, 1, 0, 0, 0, wireNum + 1, 1])
-                self.BlocksLabels.append([x - (dia / 2), y, block_number, -1, 1, 0, 0, 1, 1])
+                self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0, current_winding_x_pos + 1])
+                self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0, current_winding_x_pos + 1])
+                self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0, current_winding_x_pos + 1])
+                self.Segments.append([node_number + 3, node_number, -1, 0, 0, 0, current_winding_x_pos + 1])
+                self.BlocksLabels.append([x - (dia_insulation / 2), (y + y_down) / 2, block_number, -1, 1, 0, 0, 1, 1])
 
-                current_winding_y_pos += 1
-                wireNum += 1
+                node_number = len(self.Nodes)
+                x = x_right - margin * 2 - ((4 * margin + layer_thickness + dia_insulation) * current_winding_x_pos)
+                self.Nodes.append([x - dia_insulation - margin, y_down + margin - input_data.Margine, 0, 0, wireNum + 1])
+                self.Nodes.append([x - dia_insulation - margin, y_up - margin + input_data.Margine, 0, 0, wireNum + 1])
+                self.Nodes.append([x - dia_insulation - margin - layer_thickness, y_up - margin + input_data.Margine,
+                                   0, 0, wireNum + 1])
+                self.Nodes.append([x - dia_insulation - margin - layer_thickness, y_down + margin - input_data.Margine,
+                                   0, 0, wireNum + 1])
+                self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0, 0])
+                self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0, 0])
+                self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0, 0])
+                self.Segments.append([node_number + 3, node_number, -1, 0, 0, 0, 0])
+                self.BlocksLabels.append([x - dia_insulation - margin - (layer_thickness / 2),
+                                          (y_up - y_down) / 2, block_number_layer_insulation,
+                                          -1, 1, 0, 0, 1, 1])
 
-            node_number = len(self.Nodes)
-            self.Nodes.append([x - dia_insulation - margin, y_down + margin - input_data.Margine, 0, 0, wireNum + 1])
-            self.Nodes.append([x - dia_insulation - margin, y_up - margin + input_data.Margine, 0, 0, wireNum + 1])
-            self.Nodes.append([x - dia_insulation - margin - layer_thickness, y_up - margin + input_data.Margine,
-                               0, 0, wireNum + 1])
-            self.Nodes.append([x - dia_insulation - margin - layer_thickness, y_down + margin - input_data.Margine,
-                               0, 0, wireNum + 1])
-            self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0, 0])
-            self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0, 0])
-            self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0, 0])
-            self.Segments.append([node_number + 3, node_number, -1, 0, 0, 0, 0])
-            self.BlocksLabels.append([x - dia_insulation - margin - (layer_thickness / 2),
-                                      (y_up - y_down) / 2, block_number_layer_insulation,
-                                      -1, 1, 0, 0, 1, 1])
+                current_winding_x_pos += 1
+                self.create_conductor_block('Primary' + str(wireNum),
+                                            0 + (current_winding_x_pos * voltage_per_winding * num_of_winding_y))
+                current_winding_y_pos = 0
 
-            current_winding_x_pos += 1
-            current_winding_y_pos = 0
         #       Add air
         x = x_right - margin
         y = y_down + margin
         block_number = self.search_block_number('Air')
-        block_label_core = [x - margin, y + margin, block_number, -1, 0, 0]
+        block_label_core = [x, y, block_number, -1, 0, 0]
         self.BlocksLabels.append(block_label_core)
 
         x = x_right + ((center - x_right) * 2) + margin
@@ -354,7 +403,7 @@ class FEMMElectrostaticFormat:
         block_label_core = [x + margin, y - margin, block_number, -1, 0, 0]
         self.BlocksLabels.append(block_label_core)
 
-    def create_electrostatic_model(self, input_data, output_data, file_name):
+    def create_electrostatic_model(self, input_data, output_data, file_name, is_simple_wire):
         if input_data.PrimaryWireCrossSectionSelected > 0:
             primary_cross_section = input_data.PrimaryWireCrossSectionSelected
         else:
@@ -392,5 +441,6 @@ class FEMMElectrostaticFormat:
                                      float(input_data.BobbinXmargine),
                                      float(input_data.BobbinYmargine),
                                      input_data.InputVoltage,
-                                     primary_cross_section)
+                                     primary_dia,
+                                     is_simple_wire)
             self.save_FEMM_file(file_name)

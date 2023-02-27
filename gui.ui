@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1126</width>
-    <height>937</height>
+    <width>1102</width>
+    <height>955</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>60</y>
+      <y>80</y>
       <width>1061</width>
       <height>851</height>
      </rect>
@@ -37,7 +37,7 @@
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
-      <item row="2" column="0">
+      <item row="1" column="0">
        <widget class="QGroupBox" name="groupBox_3">
         <property name="title">
          <string/>
@@ -1691,7 +1691,7 @@ section (mm^2)</string>
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>22</y>
+      <y>10</y>
       <width>111</width>
       <height>41</height>
      </rect>
@@ -1703,8 +1703,8 @@ section (mm^2)</string>
    <widget class="QComboBox" name="ModelTypeValue">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>30</y>
+      <x>630</x>
+      <y>20</y>
       <width>181</width>
       <height>22</height>
      </rect>
@@ -1729,8 +1729,8 @@ section (mm^2)</string>
     <property name="geometry">
      <rect>
       <x>530</x>
-      <y>20</y>
-      <width>81</width>
+      <y>10</y>
+      <width>91</width>
       <height>41</height>
      </rect>
     </property>
@@ -1739,13 +1739,27 @@ section (mm^2)</string>
 FEMM model</string>
     </property>
    </widget>
+   <widget class="QCheckBox" name="SimplifiedWireModelCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>60</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Simplified
+wire model</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1126</width>
+     <width>1102</width>
      <height>21</height>
     </rect>
    </property>

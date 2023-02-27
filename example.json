@@ -49,7 +49,7 @@
     "BmaxInductance": 50.0,
     "CoreCrossSectionInductance": 357.0,
     "WindingNumInductance": 28.0112,
-    "Gap": 0.703849,
+    "Gap": 7.03849,
     "CurrentDensityInductance": 4.5,
     "WireCrossSectionInductance": 2.22222,
     "WireCrossSectionSelectedInductance": 0.0,

@@ -114,7 +114,8 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
         self.SaveLoad.load_json(self, transformer_value)
 
     def save_FEMM_model(self):
-        self.run_calc()
+        transformer_value = self.parse_main_window_value_to_transformer_class()
+        self.Transformer.update_params(transformer_value)
 
         if self.Transformer.TransformerValue.ModelType == 'Magnetic field simulation' or\
                 self.Transformer.TransformerValue.ModelType == 'Inductance':
@@ -123,7 +124,7 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
                 if not name.find('.*'):
                     name = name + '.FEM'
             self.Transformer.validate_dimensions()
-            self.FEMMmodel.CreateFEMMfile(self.Transformer, name)
+            self.FEMMmodel.CreateFEMMfile(self.Transformer, name, self.SimplifiedWireModelCheckBox.isChecked())
         elif self.Transformer.TransformerValue.ModelType == 'Electrostatic field simulation':
             name, _ = QFileDialog.getSaveFileName(self, 'Save file', '', 'FEMM(*.FEE);;all Files(*)')
             if name:
@@ -131,7 +132,7 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
                     name = name + '.FEE'
             try:
                 self.Transformer.validate_dimensions()
-                self.FEMMmodel.CreateFEMMfile(self.Transformer, name)
+                self.FEMMmodel.CreateFEMMfile(self.Transformer, name, self.SimplifiedWireModelCheckBox.isChecked())
             except Exception as inst:
                 print(inst.args)
 
