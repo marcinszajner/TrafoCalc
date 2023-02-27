@@ -25,3 +25,9 @@ or better continue
 7. Press "Create FEMM model" for create .FEM file (Magnetic)
  or .FEE (electrostatic)
 8. Load created file by FEMM
+
+![Screenshot](image/example_inductor.png)
+Example output of inductor model in FEMM
+
+![Screenshot](image/window_example.png)
+Main window with loaded example
