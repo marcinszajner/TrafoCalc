@@ -1,5 +1,5 @@
 import math
-
+from FEMM_generator.draw import *
 
 class BlockCircuitPropsClass:
     def __init__(self):
@@ -152,10 +152,11 @@ class FEMMMagneticInductorFormat:
         self.FEMM_Data_dict["[Depth]"] = SizeF
 
         OutsideNodes = []
-        OutsideNodes.append([0, 0, 0, 0])
-        OutsideNodes.append([0, 2 * SizeD, 0, 0])
-        OutsideNodes.append([SizeA, 2 * SizeD, 0, 0])
-        OutsideNodes.append([SizeA, 0, 0, 0])
+        OutsideNodes.append([0, 0])
+        OutsideNodes.append([0, 2 * SizeD])
+        OutsideNodes.append([SizeA, 2 * SizeD])
+        OutsideNodes.append([SizeA, 0])
+        draw_polygon(OutsideNodes, self.Nodes, self.Segments)
 
         InsideNode1_1_corX = round((SizeA - SizeB) / 2, 6)
         InsideNode1_1_corY = round(SizeD - SizeE, 6)
@@ -169,26 +170,28 @@ class FEMMMagneticInductorFormat:
         self.WindingBoundary["center"] = SizeA / 2
 
         InsideNodes = []
-        InsideNodes.append([InsideNode1_1_corX, InsideNode1_1_corY, 0, 0])
-        InsideNodes.append([InsideNode1_1_corX + distance_tmp, InsideNode1_1_corY, 0, 0])
-        InsideNodes.append([InsideNode1_1_corX + distance_tmp, InsideNode1_1_corY + SizeE_with_gap, 0, 0])
-        InsideNodes.append([InsideNode1_1_corX + distance_tmp + SizeC, InsideNode1_1_corY + SizeE_with_gap, 0, 0])
-        InsideNodes.append([InsideNode1_1_corX + distance_tmp + SizeC, InsideNode1_1_corY, 0, 0])
-        InsideNodes.append([InsideNode1_1_corX + (2 * distance_tmp) + SizeC, InsideNode1_1_corY, 0, 0])
-        InsideNodes.append([InsideNode1_1_corX + (2 * distance_tmp) + SizeC, InsideNode1_1_corY + (2 * SizeE), 0, 0])
-        InsideNodes.append([InsideNode1_1_corX + distance_tmp + SizeC, InsideNode1_1_corY + (2 * SizeE), 0, 0])
+        InsideNodes.append([InsideNode1_1_corX, InsideNode1_1_corY])
+        InsideNodes.append([InsideNode1_1_corX + distance_tmp, InsideNode1_1_corY])
+        InsideNodes.append([InsideNode1_1_corX + distance_tmp, InsideNode1_1_corY + SizeE_with_gap])
+        InsideNodes.append([InsideNode1_1_corX + distance_tmp + SizeC, InsideNode1_1_corY + SizeE_with_gap])
+        InsideNodes.append([InsideNode1_1_corX + distance_tmp + SizeC, InsideNode1_1_corY])
+        InsideNodes.append([InsideNode1_1_corX + (2 * distance_tmp) + SizeC, InsideNode1_1_corY])
+        InsideNodes.append([InsideNode1_1_corX + (2 * distance_tmp) + SizeC, InsideNode1_1_corY + (2 * SizeE)])
+        InsideNodes.append([InsideNode1_1_corX + distance_tmp + SizeC, InsideNode1_1_corY + (2 * SizeE)])
         InsideNodes.append([InsideNode1_1_corX + distance_tmp + SizeC, InsideNode1_1_corY
-                            + (2 * SizeE) - SizeE_with_gap, 0, 0])
-        InsideNodes.append([InsideNode1_1_corX + distance_tmp, InsideNode1_1_corY + (2 * SizeE) - SizeE_with_gap, 0, 0])
-        InsideNodes.append([InsideNode1_1_corX + distance_tmp, InsideNode1_1_corY + (2 * SizeE), 0, 0])
-        InsideNodes.append([InsideNode1_1_corX, InsideNode1_1_corY + (2 * SizeE), 0, 0])
+                            + (2 * SizeE) - SizeE_with_gap])
+        InsideNodes.append([InsideNode1_1_corX + distance_tmp, InsideNode1_1_corY + (2 * SizeE) - SizeE_with_gap])
+        InsideNodes.append([InsideNode1_1_corX + distance_tmp, InsideNode1_1_corY + (2 * SizeE)])
+        InsideNodes.append([InsideNode1_1_corX, InsideNode1_1_corY + (2 * SizeE)])
+        draw_polygon(InsideNodes, self.Nodes, self.Segments)
 
         middle_point = [SizeA / 2, SizeD]
         FrameNodes = []
-        FrameNodes.append([middle_point[0] - (2 * SizeA), middle_point[1] - (4 * SizeD), 0, 0])
-        FrameNodes.append([middle_point[0] + (2 * SizeA), middle_point[1] - (4 * SizeD), 0, 0])
-        FrameNodes.append([middle_point[0] + (2 * SizeA), middle_point[1] + (4 * SizeD), 0, 0])
-        FrameNodes.append([middle_point[0] - (2 * SizeA), middle_point[1] + (4 * SizeD), 0, 0])
+        FrameNodes.append([middle_point[0] - (2 * SizeA), middle_point[1] - (4 * SizeD)])
+        FrameNodes.append([middle_point[0] + (2 * SizeA), middle_point[1] - (4 * SizeD)])
+        FrameNodes.append([middle_point[0] + (2 * SizeA), middle_point[1] + (4 * SizeD)])
+        FrameNodes.append([middle_point[0] - (2 * SizeA), middle_point[1] + (4 * SizeD)])
+        draw_polygon(FrameNodes, self.Nodes, self.Segments)
 
         block_number = self.search_block_number(TransformerData.CoreMaterialName)
         blocklabelcore = [SizeA / 2, SizeD * 1.5, block_number, -1, 0, 0, 0, 0, 0]
@@ -197,48 +200,6 @@ class FEMMMagneticInductorFormat:
         block_number = self.search_block_number('Air')
         blocklabelcore = [SizeA / 2, SizeD * 3, block_number, -1, 0, 0, 0, 0, 0]
         self.BlocksLabels.append(blocklabelcore)
-
-        self.Nodes += OutsideNodes
-        self.Nodes += InsideNodes
-        self.Nodes += FrameNodes
-
-        self.OutsideNodesNum = len(OutsideNodes)
-        self.InsideNodesNum1 = len(InsideNodes)
-        self.FrameNodesNum = len(FrameNodes)
-
-    def create_segments_coordinate(self):
-        SegmentNum = 0
-        index = 0
-        OutsideSegments = []
-        while index < self.OutsideNodesNum - 1:
-            OutsideSegments.append([SegmentNum, SegmentNum + 1, -1, 0, 0, 0])
-            index += 1
-            SegmentNum += 1
-        OutsideSegments.append([SegmentNum, 0, -1, 0, 0, 0])
-        SegmentNum += 1
-
-        index = 0
-        InsideSegments = []
-        first_element = SegmentNum
-        while index < self.InsideNodesNum1 - 1:
-            InsideSegments.append([SegmentNum, SegmentNum + 1, -1, 0, 0, 0])
-            index += 1
-            SegmentNum += 1
-        InsideSegments.append([SegmentNum, first_element, -1, 0, 0, 0])
-        SegmentNum += 1
-
-        index = 0
-        first_element = SegmentNum
-        FrameSegments = []
-        while index < self.FrameNodesNum - 1:
-            FrameSegments.append([SegmentNum, SegmentNum + 1, -1, 0, 0, 0])
-            index += 1
-            SegmentNum += 1
-        FrameSegments.append([SegmentNum, first_element, -1, 0, 0, 0])
-
-        self.Segments += OutsideSegments
-        self.Segments += InsideSegments
-        self.Segments += FrameSegments
 
     def create_material_block(self, material_name, permeability, conductivity):
         block = BlockPropsClass()
@@ -301,28 +262,20 @@ class FEMMMagneticInductorFormat:
             y_poz = 0
             while windingNum > wireNum:
                 while num_of_winding_y > current_winding_y_pos and windingNum > wireNum:
-                    x = x_right - margin * 2 - ((4 * margin + layer_thickness) * current_winding_x_pos)\
-                        - (dia_insulation * current_winding_x_pos)
-                    y = y_down + margin * 2 + (margin * current_winding_y_pos)\
-                        + (dia_insulation * current_winding_y_pos) + (dia_insulation / 2)
-                    self.Nodes.append([x, y, 0, 0])
-                    self.Nodes.append([x - dia, y, 0, 0])
-                    self.ArcSegments.append([node_number, node_number + 1, 180, 1, 0, 0, 0, 1])
-                    self.ArcSegments.append([node_number + 1, node_number, 180, 1, 0, 0, 0, 1])
-                    self.BlocksLabels.append([x - (dia / 2), y, block_number, -1, 1, 0, 0, 1, 1])
-                    node_number = len(self.Nodes)
+                    x = x_right - margin * 2 - ((4 * margin + layer_thickness + dia_insulation) * current_winding_x_pos)\
+                        - (dia_insulation / 2)
+                    y = y_down + margin * 2 + ((margin + dia_insulation) * current_winding_y_pos) + (dia_insulation / 2)
+
+                    draw_circle(x, y, dia_insulation, self.Nodes, self.ArcSegments)
+                    self.BlocksLabels.append([x, y, block_number, -1, 1, 0, 0, 1, 1])
 
                     x = x_right + ((center - x_right) * 2) + margin * 2\
                         + ((4 * margin + layer_thickness) * current_winding_x_pos)\
-                        + (dia_insulation * current_winding_x_pos)
+                        + (dia_insulation * current_winding_x_pos) + (dia_insulation / 2)
                     y = y_down + margin * 2 + (margin * current_winding_y_pos)\
                         + (dia_insulation * current_winding_y_pos) + (dia_insulation / 2)
-                    self.Nodes.append([x, y, 0, 0])
-                    self.Nodes.append([x + dia, y, 0, 0])
-                    self.ArcSegments.append([node_number, node_number + 1, 180, 1, 0, 0, 0, 1])
-                    self.ArcSegments.append([node_number + 1, node_number, 180, 1, 0, 0, 0, 1])
-                    self.BlocksLabels.append([x + (dia / 2), y, block_number, -1, 1, 0, 0, -1, 1])
-                    node_number = len(self.Nodes)
+                    draw_circle(x, y, dia_insulation, self.Nodes, self.ArcSegments)
+                    self.BlocksLabels.append([x, y, block_number, -1, 1, 0, 0, -1, 1])
 
                     current_winding_y_pos += 1
                     wireNum += 1
@@ -347,15 +300,13 @@ class FEMMMagneticInductorFormat:
                 x = first_x
                 y = y_down + margin * 2 + (margin * y_poz)\
                     + (dia_insulation * y_poz)
-                self.Nodes.append([first_x, first_y, 0, 0])
-                self.Nodes.append([x, y, 0, 0])
-                self.Nodes.append([x - dia_insulation, y, 0, 0])
-                self.Nodes.append([x - dia_insulation, first_y, 0, 0])
 
-                self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0])
-                self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0])
-                self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0])
-                self.Segments.append([node_number + 3, node_number, -1, 0, 0, 0])
+                winding_polygon_left = []
+                winding_polygon_left.append([first_x, first_y])
+                winding_polygon_left.append([x, y])
+                winding_polygon_left.append([x - dia_insulation, y])
+                winding_polygon_left.append([x - dia_insulation, first_y])
+                draw_polygon(winding_polygon_left, self.Nodes, self.Segments)
                 self.BlocksLabels.append([first_x - (dia_insulation / 2), first_y
                                           + (dia_insulation / 2), block_number, -1, 1, 0, 0, windingNum, 1])
 
@@ -364,81 +315,65 @@ class FEMMMagneticInductorFormat:
                 x = first_mirror_x
                 y = y_down + margin * 2 + (margin * y_poz)\
                     + (dia_insulation * y_poz)
-                self.Nodes.append([first_mirror_x, first_mirror_y, 0, 0])
-                self.Nodes.append([x, y, 0, 0])
-                self.Nodes.append([x + dia_insulation, y, 0, 0])
-                self.Nodes.append([x + dia_insulation, first_mirror_y, 0, 0])
 
-                self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0])
-                self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0])
-                self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0])
-                self.Segments.append([node_number + 3, node_number, -1, 0, 0, 0])
+                winding_polygon_right = []
+                winding_polygon_right.append([first_mirror_x, first_mirror_y])
+                winding_polygon_right.append([x, y])
+                winding_polygon_right.append([x + dia_insulation, y])
+                winding_polygon_right.append([x + dia_insulation, first_mirror_y])
+                draw_polygon(winding_polygon_right, self.Nodes, self.Segments)
                 self.BlocksLabels.append([first_mirror_x + (dia_insulation / 2), first_mirror_y
                                           + (dia_insulation / 2), block_number, -1, 1, 0, 0, -windingNum, 1])
             elif current_winding_x_pos >= 2:
-                x = first_mirror_x
                 y = first_y + (num_of_winding_y * (dia_insulation + margin)) + 2 * margin
-                self.Nodes.append([first_x, first_y, 0, 0])
-                self.Nodes.append([first_x, y, 0, 0])
                 if (windingNum % num_of_winding_y) == 0:
                     x = first_x - (current_winding_x_pos * (dia_insulation + margin)) - 2 * margin
-                    self.Nodes.append([x, y, 0, 0])
-                    self.Nodes.append([x, first_y, 0, 0])
-                    self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 3, node_number, -1, 0, 0, 0])
+
+                    winding_polygon_left = []
+                    winding_polygon_left.append([first_x, first_y])
+                    winding_polygon_left.append([first_x, y])
+                    winding_polygon_left.append([x, y])
+                    winding_polygon_left.append([x, first_y])
+                    draw_polygon(winding_polygon_left, self.Nodes, self.Segments)
                     self.BlocksLabels.append([first_x - (dia_insulation / 2), first_y
                                               + (dia_insulation / 2), block_number, -1, 1, 0, 0, windingNum, 1])
 
-                    node_number = len(self.Nodes)
-
-                    self.Nodes.append([first_mirror_x, first_mirror_y, 0, 0])
-                    self.Nodes.append([first_mirror_x, y, 0, 0])
+                    winding_polygon_right = []
+                    winding_polygon_right.append([first_mirror_x, first_mirror_y])
+                    winding_polygon_right.append([first_mirror_x, y])
                     x = first_mirror_x + (current_winding_x_pos * (dia_insulation + margin)) + 2 * margin
-                    self.Nodes.append([x, y, 0, 0])
-                    self.Nodes.append([x, first_mirror_y, 0, 0])
-                    self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 3, node_number, -1, 0, 0, 0])
+                    winding_polygon_right.append([x, y])
+                    winding_polygon_right.append([x, first_mirror_y])
+                    draw_polygon(winding_polygon_right, self.Nodes, self.Segments)
                     self.BlocksLabels.append([first_mirror_x + (dia_insulation / 2), first_mirror_y
                                               + (dia_insulation / 2), block_number, -1, 1, 0, 0, -windingNum, 1])
                 else:
+                    winding_polygon_left = []
+                    winding_polygon_left.append([first_x, first_y])
+                    winding_polygon_left.append([first_x, y])
                     x = first_x - ((current_winding_x_pos - 1) * (dia_insulation + margin)) - 2 * margin
-                    self.Nodes.append([x, y, 0, 0])
+                    winding_polygon_left.append([x, y])
                     y = y_down + margin * 2 + (margin * y_poz) + (dia_insulation * y_poz)
-                    self.Nodes.append([x, y, 0, 0])
+                    winding_polygon_left.append([x, y])
                     x = first_x - (current_winding_x_pos * (dia_insulation + margin)) - 2 * margin
-                    self.Nodes.append([x, y, 0, 0])
-                    self.Nodes.append([x, first_y, 0, 0])
-                    self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 3, node_number + 4, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 4, node_number + 5, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 5, node_number, -1, 0, 0, 0])
+                    winding_polygon_left.append([x, y])
+                    winding_polygon_left.append([x, first_y])
+                    draw_polygon(winding_polygon_left, self.Nodes, self.Segments)
                     self.BlocksLabels.append([first_x - (dia_insulation / 2), first_y
                                               + (dia_insulation / 2), block_number, -1, 1, 0, 0, windingNum, 1])
 
-                    node_number = len(self.Nodes)
-
-                    self.Nodes.append([first_mirror_x, first_mirror_y, 0, 0])
+                    winding_polygon_right = []
+                    winding_polygon_right.append([first_mirror_x, first_mirror_y])
                     y = first_y + (num_of_winding_y * (dia_insulation + margin)) + 2 * margin
-                    self.Nodes.append([first_mirror_x, y, 0, 0])
+                    winding_polygon_right.append([first_mirror_x, y])
                     x = first_mirror_x + ((current_winding_x_pos - 1) * (dia_insulation + margin)) + 2 * margin
-                    self.Nodes.append([x, y, 0, 0])
+                    winding_polygon_right.append([x, y])
                     y = y_down + margin * 2 + (margin * y_poz) + (dia_insulation * y_poz)
-                    self.Nodes.append([x, y, 0, 0])
+                    winding_polygon_right.append([x, y])
                     x = first_mirror_x + (current_winding_x_pos * (dia_insulation + margin)) + 2 * margin
-                    self.Nodes.append([x, y, 0, 0])
-                    self.Nodes.append([x, first_y, 0, 0])
-                    self.Segments.append([node_number, node_number + 1, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 1, node_number + 2, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 2, node_number + 3, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 3, node_number + 4, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 4, node_number + 5, -1, 0, 0, 0])
-                    self.Segments.append([node_number + 5, node_number, -1, 0, 0, 0])
+                    winding_polygon_right.append([x, y])
+                    winding_polygon_right.append([x, first_y])
+                    draw_polygon(winding_polygon_right, self.Nodes, self.Segments)
                     self.BlocksLabels.append([first_mirror_x + (dia_insulation / 2), first_mirror_y
                                               + (dia_insulation / 2), block_number, -1, 1, 0, 0, -windingNum, 1])
 
@@ -474,7 +409,6 @@ class FEMMMagneticInductorFormat:
 
         if input_data.CoreShape == 'EE':
             self.create_node_coordinate_and_core_air_label(input_data)
-            self.create_segments_coordinate()
 
             self.create_wire_primary(input_data,
                                      output_data,
