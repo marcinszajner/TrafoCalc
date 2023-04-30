@@ -1,4 +1,4 @@
-from Transformer import Transformer
+from src.Transformer import Transformer
 from FEMM_generator import Magnetic
 from FEMM_generator import Electrostatic
 from FEMM_generator import Magnetic_inductor

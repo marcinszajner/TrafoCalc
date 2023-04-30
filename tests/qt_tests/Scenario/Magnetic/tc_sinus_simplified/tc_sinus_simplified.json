@@ -50,5 +50,5 @@
     "Gap": 0.0,
     "WireCrossSectionInductance": 0.0,
     "WireCrossSectionSelectedInductance": 0.0,
-    "SimplifiedWireModel": 0.0
+    "SimplifiedWireModel": 1.0
 }

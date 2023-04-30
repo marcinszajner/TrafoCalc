@@ -6,7 +6,7 @@
     "CoreWindingArea": 450.0,
     "FillFactor": 0.3,
     "Frequency": 100000.0,
-    "InputVoltage": 162.0,
+    "InputVoltage": 700.0,
     "OutputPower": 1000.0,
     "OutputVoltage": 1000.0,
     "MagneticPathLength": 127.0,
@@ -33,7 +33,7 @@
     "CoreMaterialName": "name5",
     "BobbinXmargine": 0.0,
     "BobbinYmargine": 0.0,
-    "ModelType": "Magnetic field simulation",
+    "ModelType": "Electrostatic field simulation",
     "PrimaryWindingMaterial": "Copper",
     "PrimaryWindingMaterialConductivity": 58000000.0,
     "SecondaryWindingMaterial": "Copper",
@@ -50,5 +50,5 @@
     "Gap": 0.0,
     "WireCrossSectionInductance": 0.0,
     "WireCrossSectionSelectedInductance": 0.0,
-    "SimplifiedWireModel": 0.0
+    "SimplifiedWireModel": 1.0
 }

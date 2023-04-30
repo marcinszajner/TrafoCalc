@@ -1,10 +1,10 @@
 import sys
-import gui
+from src import gui
 from Help_items import Help_windows
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
-from Transformer import *
-from SaveLoad import SaveLoad
+from src.Transformer import *
+from src.SaveLoad import SaveLoad
 from FEMM_generator import File_format
 
 
@@ -38,7 +38,9 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
         name = 'Value'
         for key, value in a.items():
             main_menu_transformer_values = getattr(self, key + name)
-            if getattr(main_menu_transformer_values, 'text', None):
+            if getattr(main_menu_transformer_values, 'isChecked', None):
+                setattr(transformer_value, key, main_menu_transformer_values.isChecked())
+            elif getattr(main_menu_transformer_values, 'text', None):
                 setattr(transformer_value, key, main_menu_transformer_values.text())
             elif getattr(main_menu_transformer_values, 'currentText', None):
                 setattr(transformer_value, key, main_menu_transformer_values.currentText())
@@ -123,18 +125,18 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
             if name:
                 if not name.find('.*'):
                     name = name + '.FEM'
-            self.Transformer.validate_dimensions()
-            self.FEMMmodel.CreateFEMMfile(self.Transformer, name, self.SimplifiedWireModelCheckBox.isChecked())
+                self.Transformer.validate_dimensions()
+                self.FEMMmodel.CreateFEMMfile(self.Transformer, name, self.SimplifiedWireModelValue.isChecked())
         elif self.Transformer.TransformerValue.ModelType == 'Electrostatic field simulation':
             name, _ = QFileDialog.getSaveFileName(self, 'Save file', '', 'FEMM(*.FEE);;all Files(*)')
             if name:
                 if not name.find('.*'):
                     name = name + '.FEE'
-            try:
-                self.Transformer.validate_dimensions()
-                self.FEMMmodel.CreateFEMMfile(self.Transformer, name, self.SimplifiedWireModelCheckBox.isChecked())
-            except Exception as inst:
-                print(inst.args)
+                try:
+                    self.Transformer.validate_dimensions()
+                    self.FEMMmodel.CreateFEMMfile(self.Transformer, name, self.SimplifiedWireModelValue.isChecked())
+                except Exception as inst:
+                    print(inst.args)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

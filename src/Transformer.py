@@ -58,14 +58,12 @@ class TransformerValueClass:
         #inductor params
         self.Inductance = 0
         self.CurrentMax = 0
-        self.BmaxInductance = 0
-        self.CoreCrossSectionInductance = 0
         self.WindingNumInductance = 0
         self.Gap = 0
-        self.CurrentDensityInductance = 0
         self.WireCrossSectionInductance = 0
         self.WireCrossSectionSelectedInductance = 0
-        self.FrequencyInductance = 0
+
+        self.SimplifiedWireModel = 0
 
 
 class TransformerOutputValueClass:
@@ -197,10 +195,10 @@ class Transformer:
     def Calculate_inductance(self):
         ind = self.TransformerValue.Inductance / 1000
         curr = self.TransformerValue.CurrentMax
-        Bmax = self.TransformerValue.BmaxInductance / 1000
+        Bmax = self.TransformerValue.Bmax / 1000
         uo = 0.0000012563706
-        Ae = self.TransformerValue.CoreCrossSectionInductance / 1000000
-        curr_dens = self.TransformerValue.CurrentDensityInductance
+        Ae = self.TransformerValue.CoreCrossSection / 1000000
+        curr_dens = self.TransformerValue.CurrentDensity
 
         cross_section = curr / curr_dens
 

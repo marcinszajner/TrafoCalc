@@ -17,9 +17,9 @@
    <widget class="QTabWidget" name="TransformerTab">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>80</y>
-      <width>1061</width>
+      <width>1081</width>
       <height>851</height>
      </rect>
     </property>
@@ -37,7 +37,7 @@
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
-      <item row="1" column="0">
+      <item row="0" column="0">
        <widget class="QGroupBox" name="groupBox_3">
         <property name="title">
          <string/>
@@ -99,108 +99,24 @@
           <rect>
            <x>10</x>
            <y>10</y>
-           <width>251</width>
-           <height>491</height>
+           <width>271</width>
+           <height>111</height>
           </rect>
          </property>
          <property name="title">
-          <string>Tranformer input data</string>
+          <string>Power supply input data</string>
          </property>
-         <widget class="QLabel" name="FillFactorLabel">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>410</y>
-            <width>91</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Fill Factor
-(0&lt;x&lt;1)</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="CoreCrossSectionValue">
-          <property name="geometry">
-           <rect>
-            <x>130</x>
-            <y>340</y>
-            <width>51</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
          <widget class="QLineEdit" name="OutputPowerValue">
           <property name="geometry">
            <rect>
             <x>130</x>
-            <y>100</y>
+            <y>80</y>
             <width>51</width>
             <height>20</height>
            </rect>
           </property>
-         </widget>
-         <widget class="QLineEdit" name="FillFactorValue">
-          <property name="geometry">
-           <rect>
-            <x>130</x>
-            <y>420</y>
-            <width>51</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="MagneticPathLengthLabel">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>370</y>
-            <width>81</width>
-            <height>31</height>
-           </rect>
-          </property>
           <property name="text">
-           <string>Magnetic Path
-Length [mm]</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="BmaxLabel">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>220</y>
-            <width>71</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Bmax [mT]</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="CoreMaterialNameValue">
-          <property name="geometry">
-           <rect>
-            <x>130</x>
-            <y>260</y>
-            <width>81</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>New Material</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="FrequencyLabel">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>140</y>
-            <width>91</width>
-            <height>16</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Frequency [Hz]</string>
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLabel" name="InputVoltageLabel">
@@ -216,108 +132,30 @@ Length [mm]</string>
            <string>Input Voltage[V]</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="CurrentDensityValue">
-          <property name="geometry">
-           <rect>
-            <x>130</x>
-            <y>180</y>
-            <width>51</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="BmaxValue">
-          <property name="geometry">
-           <rect>
-            <x>130</x>
-            <y>220</y>
-            <width>51</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="MagneticPathLengthValue">
-          <property name="geometry">
-           <rect>
-            <x>130</x>
-            <y>380</y>
-            <width>51</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
          <widget class="QLineEdit" name="OutputVoltageValue">
           <property name="geometry">
            <rect>
             <x>130</x>
-            <y>60</y>
+            <y>50</y>
             <width>51</width>
             <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="CoreMaterialLabel">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>250</y>
-            <width>71</width>
-            <height>31</height>
            </rect>
           </property>
           <property name="text">
-           <string>Core material</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="FrequencyValue">
-          <property name="geometry">
-           <rect>
-            <x>130</x>
-            <y>140</y>
-            <width>51</width>
-            <height>20</height>
-           </rect>
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLabel" name="label">
           <property name="geometry">
            <rect>
             <x>20</x>
-            <y>60</y>
+            <y>50</y>
             <width>91</width>
             <height>16</height>
            </rect>
           </property>
           <property name="text">
            <string>Output voltage[V]</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_4">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>330</y>
-            <width>111</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Core  Cross-Section
-[mm^2]</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="CurrentDensityLabel">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>170</y>
-            <width>91</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Current density
-[A/mm^2]</string>
           </property>
          </widget>
          <widget class="QComboBox" name="InputVoltageShapeValue">
@@ -340,20 +178,6 @@ Length [mm]</string>
            </property>
           </item>
          </widget>
-         <widget class="QLabel" name="CorePermeabilityLabel">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>290</y>
-            <width>101</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Core relative
-permeability (μr)</string>
-          </property>
-         </widget>
          <widget class="QLineEdit" name="InputVoltageValue">
           <property name="geometry">
            <rect>
@@ -363,22 +187,15 @@ permeability (μr)</string>
             <height>20</height>
            </rect>
           </property>
-         </widget>
-         <widget class="QLineEdit" name="CorePermeabilityValue">
-          <property name="geometry">
-           <rect>
-            <x>130</x>
-            <y>300</y>
-            <width>51</width>
-            <height>20</height>
-           </rect>
+          <property name="text">
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLabel" name="OutputPowerLabel">
           <property name="geometry">
            <rect>
             <x>20</x>
-            <y>100</y>
+            <y>80</y>
             <width>91</width>
             <height>16</height>
            </rect>
@@ -387,37 +204,13 @@ permeability (μr)</string>
            <string>Output Power [W]</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="CoreWindingAreaValue">
-          <property name="geometry">
-           <rect>
-            <x>130</x>
-            <y>460</y>
-            <width>51</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="CoreDimensionsLabel">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>450</y>
-            <width>81</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Core winding
-area [mm^2]</string>
-          </property>
-         </widget>
         </widget>
         <widget class="QGroupBox" name="dimensions">
          <property name="geometry">
           <rect>
-           <x>270</x>
+           <x>250</x>
            <y>200</y>
-           <width>761</width>
+           <width>801</width>
            <height>301</height>
           </rect>
          </property>
@@ -445,6 +238,9 @@ area [mm^2]</string>
             <width>41</width>
             <height>20</height>
            </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLabel" name="CSizeLabel">
@@ -495,6 +291,9 @@ area [mm^2]</string>
             <height>20</height>
            </rect>
           </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
          </widget>
          <widget class="QLineEdit" name="SizeFValue">
           <property name="geometry">
@@ -505,6 +304,9 @@ area [mm^2]</string>
             <height>20</height>
            </rect>
           </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
          </widget>
          <widget class="QLineEdit" name="SizeBValue">
           <property name="geometry">
@@ -514,6 +316,9 @@ area [mm^2]</string>
             <width>41</width>
             <height>20</height>
            </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLabel" name="FSizeLabel">
@@ -538,6 +343,9 @@ area [mm^2]</string>
             <height>20</height>
            </rect>
           </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
          </widget>
          <widget class="QLabel" name="ESizeLabel">
           <property name="geometry">
@@ -561,34 +369,43 @@ area [mm^2]</string>
             <height>20</height>
            </rect>
           </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
          </widget>
          <widget class="QLineEdit" name="BobbinYmargineValue">
           <property name="geometry">
            <rect>
-            <x>490</x>
+            <x>520</x>
             <y>140</y>
             <width>41</width>
             <height>20</height>
            </rect>
           </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
          </widget>
          <widget class="QLineEdit" name="MargineValue">
           <property name="geometry">
            <rect>
-            <x>490</x>
+            <x>520</x>
             <y>170</y>
             <width>41</width>
             <height>20</height>
            </rect>
           </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
          </widget>
          <widget class="QLabel" name="MargineLabel">
           <property name="geometry">
            <rect>
-            <x>440</x>
+            <x>470</x>
             <y>160</y>
             <width>51</width>
-            <height>41</height>
+            <height>51</height>
            </rect>
           </property>
           <property name="text">
@@ -600,7 +417,7 @@ margine
          <widget class="QLabel" name="bobbinLabel">
           <property name="geometry">
            <rect>
-            <x>490</x>
+            <x>520</x>
             <y>70</y>
             <width>61</width>
             <height>31</height>
@@ -614,17 +431,20 @@ dimensions</string>
          <widget class="QLineEdit" name="BobbinXmargineValue">
           <property name="geometry">
            <rect>
-            <x>490</x>
+            <x>520</x>
             <y>110</y>
             <width>41</width>
             <height>20</height>
            </rect>
           </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
          </widget>
          <widget class="QLabel" name="bobbinXLabel">
           <property name="geometry">
            <rect>
-            <x>440</x>
+            <x>470</x>
             <y>110</y>
             <width>41</width>
             <height>16</height>
@@ -637,7 +457,7 @@ dimensions</string>
          <widget class="QLabel" name="bobbinYlabel">
           <property name="geometry">
            <rect>
-            <x>440</x>
+            <x>470</x>
             <y>140</y>
             <width>41</width>
             <height>16</height>
@@ -650,7 +470,7 @@ dimensions</string>
          <widget class="QLabel" name="EECoreImageLabel">
           <property name="geometry">
            <rect>
-            <x>150</x>
+            <x>200</x>
             <y>10</y>
             <width>261</width>
             <height>281</height>
@@ -694,7 +514,7 @@ dimensions</string>
          <widget class="QLabel" name="MargineLabel_2">
           <property name="geometry">
            <rect>
-            <x>550</x>
+            <x>590</x>
             <y>10</y>
             <width>201</width>
             <height>281</height>
@@ -711,9 +531,9 @@ dimensions</string>
         <widget class="QGroupBox" name="InsulationGroup">
          <property name="geometry">
           <rect>
-           <x>600</x>
+           <x>640</x>
            <y>0</y>
-           <width>431</width>
+           <width>411</width>
            <height>201</height>
           </rect>
          </property>
@@ -728,6 +548,9 @@ dimensions</string>
             <width>61</width>
             <height>20</height>
            </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLabel" name="RelativePermittivityLabel">
@@ -806,6 +629,9 @@ material</string>
             <width>61</width>
             <height>20</height>
            </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLabel" name="SecondaryWireInsulationLabel_2">
@@ -896,6 +722,9 @@ Insulation</string>
             <height>20</height>
            </rect>
           </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
          </widget>
          <widget class="QLabel" name="BetweenWireInsulationMaterialLabel">
           <property name="geometry">
@@ -919,6 +748,9 @@ insulation material</string>
             <width>51</width>
             <height>20</height>
            </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLineEdit" name="PrimaryWireInsulationNameValue">
@@ -952,13 +784,13 @@ insulation material</string>
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>500</y>
-           <width>361</width>
-           <height>301</height>
+           <y>600</y>
+           <width>571</width>
+           <height>201</height>
           </rect>
          </property>
          <property name="title">
-          <string>Transformer output data</string>
+          <string>Power supply output data</string>
          </property>
          <widget class="QLabel" name="SecondaryWireCrossSectionSelectedlabel">
           <property name="geometry">
@@ -1013,6 +845,9 @@ section (mm^2)</string>
             <height>20</height>
            </rect>
           </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
          </widget>
          <widget class="QLineEdit" name="SecondaryWireCrossSectionValue">
           <property name="enabled">
@@ -1021,7 +856,7 @@ section (mm^2)</string>
           <property name="geometry">
            <rect>
             <x>100</x>
-            <y>140</y>
+            <y>160</y>
             <width>51</width>
             <height>20</height>
            </rect>
@@ -1030,8 +865,8 @@ section (mm^2)</string>
          <widget class="QLabel" name="ApTheoryLabel">
           <property name="geometry">
            <rect>
-            <x>10</x>
-            <y>240</y>
+            <x>340</x>
+            <y>70</y>
             <width>47</width>
             <height>13</height>
            </rect>
@@ -1062,6 +897,9 @@ number Selected</string>
             <width>51</width>
             <height>20</height>
            </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLineEdit" name="SecondaryWindingValue">
@@ -1096,8 +934,8 @@ number Selected</string>
           </property>
           <property name="geometry">
            <rect>
-            <x>100</x>
-            <y>250</y>
+            <x>420</x>
+            <y>110</y>
             <width>111</width>
             <height>20</height>
            </rect>
@@ -1106,8 +944,8 @@ number Selected</string>
          <widget class="QLabel" name="MagnetizationCurrentMaxlabel">
           <property name="geometry">
            <rect>
-            <x>10</x>
-            <y>180</y>
+            <x>340</x>
+            <y>10</y>
             <width>81</width>
             <height>51</height>
            </rect>
@@ -1121,8 +959,8 @@ amplitude (A)</string>
          <widget class="QLabel" name="ApCalculatedLabel">
           <property name="geometry">
            <rect>
-            <x>10</x>
-            <y>260</y>
+            <x>340</x>
+            <y>110</y>
             <width>71</width>
             <height>16</height>
            </rect>
@@ -1135,7 +973,7 @@ amplitude (A)</string>
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>140</y>
+            <y>150</y>
             <width>101</width>
             <height>41</height>
            </rect>
@@ -1169,6 +1007,9 @@ Winding number</string>
             <height>20</height>
            </rect>
           </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
          </widget>
          <widget class="QLabel" name="PrimaryWindinglabel">
           <property name="geometry">
@@ -1190,8 +1031,8 @@ number</string>
           </property>
           <property name="geometry">
            <rect>
-            <x>100</x>
-            <y>230</y>
+            <x>420</x>
+            <y>70</y>
             <width>111</width>
             <height>20</height>
            </rect>
@@ -1231,8 +1072,8 @@ Selected (mm^2)</string>
           </property>
           <property name="geometry">
            <rect>
-            <x>100</x>
-            <y>200</y>
+            <x>420</x>
+            <y>20</y>
             <width>111</width>
             <height>20</height>
            </rect>
@@ -1246,6 +1087,9 @@ Selected (mm^2)</string>
             <width>51</width>
             <height>20</height>
            </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLabel" name="ApResultLabel">
@@ -1265,10 +1109,10 @@ Selected (mm^2)</string>
         <widget class="QGroupBox" name="AdditionalGroup">
          <property name="geometry">
           <rect>
-           <x>270</x>
-           <y>0</y>
-           <width>321</width>
-           <height>201</height>
+           <x>250</x>
+           <y>500</y>
+           <width>341</width>
+           <height>91</height>
           </rect>
          </property>
          <property name="title">
@@ -1278,7 +1122,7 @@ Selected (mm^2)</string>
           <property name="geometry">
            <rect>
             <x>220</x>
-            <y>100</y>
+            <y>10</y>
             <width>91</width>
             <height>16</height>
            </rect>
@@ -1291,7 +1135,7 @@ Selected (mm^2)</string>
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>110</y>
+            <y>20</y>
             <width>91</width>
             <height>31</height>
            </rect>
@@ -1304,8 +1148,8 @@ winding material</string>
          <widget class="QLabel" name="NameLabel_2">
           <property name="geometry">
            <rect>
-            <x>130</x>
-            <y>100</y>
+            <x>140</x>
+            <y>10</y>
             <width>47</width>
             <height>13</height>
            </rect>
@@ -1318,7 +1162,7 @@ winding material</string>
           <property name="geometry">
            <rect>
             <x>230</x>
-            <y>120</y>
+            <y>30</y>
             <width>71</width>
             <height>20</height>
            </rect>
@@ -1327,25 +1171,11 @@ winding material</string>
            <string>58000000.0</string>
           </property>
          </widget>
-         <widget class="QLabel" name="CorePermittivityLabel">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>30</y>
-            <width>91</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Core relative
-permittivity ( εr)</string>
-          </property>
-         </widget>
          <widget class="QLineEdit" name="SecondaryWindingMaterialValue">
           <property name="geometry">
            <rect>
-            <x>100</x>
-            <y>150</y>
+            <x>110</x>
+            <y>60</y>
             <width>113</width>
             <height>20</height>
            </rect>
@@ -1358,7 +1188,7 @@ permittivity ( εr)</string>
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>140</y>
+            <y>50</y>
             <width>91</width>
             <height>31</height>
            </rect>
@@ -1372,7 +1202,7 @@ winding material</string>
           <property name="geometry">
            <rect>
             <x>230</x>
-            <y>150</y>
+            <y>60</y>
             <width>71</width>
             <height>20</height>
            </rect>
@@ -1384,8 +1214,8 @@ winding material</string>
          <widget class="QLineEdit" name="PrimaryWindingMaterialValue">
           <property name="geometry">
            <rect>
-            <x>100</x>
-            <y>120</y>
+            <x>110</x>
+            <y>30</y>
             <width>113</width>
             <height>20</height>
            </rect>
@@ -1394,48 +1224,14 @@ winding material</string>
            <string>Copper primary</string>
           </property>
          </widget>
-         <widget class="QLabel" name="CoreConductivityLabel">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>60</y>
-            <width>91</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Core relative
-Conductivity (σr)</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="CoreConductivityValue">
-          <property name="geometry">
-           <rect>
-            <x>100</x>
-            <y>70</y>
-            <width>61</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="CorePermittivityValue">
-          <property name="geometry">
-           <rect>
-            <x>100</x>
-            <y>40</y>
-            <width>61</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
         </widget>
         <widget class="QGroupBox" name="groupBox">
          <property name="geometry">
           <rect>
-           <x>380</x>
-           <y>500</y>
-           <width>621</width>
-           <height>301</height>
+           <x>290</x>
+           <y>20</y>
+           <width>251</width>
+           <height>91</height>
           </rect>
          </property>
          <property name="title">
@@ -1458,7 +1254,7 @@ Conductivity (σr)</string>
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>70</y>
+            <y>60</y>
             <width>91</width>
             <height>16</height>
            </rect>
@@ -1467,12 +1263,171 @@ Conductivity (σr)</string>
            <string>Current max [A]</string>
           </property>
          </widget>
-         <widget class="QLabel" name="BmaxInductanceLabel">
+         <widget class="QLineEdit" name="CurrentMaxValue">
           <property name="geometry">
            <rect>
-            <x>30</x>
-            <y>110</y>
+            <x>130</x>
+            <y>60</y>
+            <width>113</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="InductanceValue">
+          <property name="geometry">
+           <rect>
+            <x>130</x>
+            <y>30</y>
+            <width>113</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="TransformatorPramsBox_2">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>130</y>
+           <width>231</width>
+           <height>461</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Core params</string>
+         </property>
+         <widget class="QLineEdit" name="CoreMaterialNameValue">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>30</y>
             <width>81</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>New Material</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="CoreMaterialLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>71</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Core material</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="CorePermeabilityValue">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>70</y>
+            <width>51</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="CorePermeabilityLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>101</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Core relative
+permeability (μr)</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="CoreConductivityValue">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>110</y>
+            <width>61</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="CoreConductivityLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>100</y>
+            <width>91</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Core relative
+Conductivity (σr)</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="CorePermittivityValue">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>150</y>
+            <width>61</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="CorePermittivityLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>140</y>
+            <width>91</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Core relative
+permittivity (εr)</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="BmaxValue">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>190</y>
+            <width>51</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="BmaxLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>190</y>
+            <width>71</width>
             <height>16</height>
            </rect>
           </property>
@@ -1480,12 +1435,52 @@ Conductivity (σr)</string>
            <string>Bmax [mT]</string>
           </property>
          </widget>
-         <widget class="QLabel" name="CoreCrossSectionInductanceLabel">
+         <widget class="QLineEdit" name="FillFactorValue">
           <property name="geometry">
            <rect>
-            <x>30</x>
-            <y>180</y>
-            <width>101</width>
+            <x>120</x>
+            <y>230</y>
+            <width>51</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="FillFactorLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>220</y>
+            <width>91</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Fill Factor
+(0&lt;x&lt;1)</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="CoreCrossSectionValue">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>270</y>
+            <width>51</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_4">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>260</y>
+            <width>111</width>
             <height>31</height>
            </rect>
           </property>
@@ -1494,10 +1489,143 @@ Conductivity (σr)</string>
 [mm^2]</string>
           </property>
          </widget>
+         <widget class="QLineEdit" name="MagneticPathLengthValue">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>310</y>
+            <width>51</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="MagneticPathLengthLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>300</y>
+            <width>81</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Magnetic Path
+Length [mm]</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="CoreWindingAreaValue">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>350</y>
+            <width>51</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="CoreDimensionsLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>340</y>
+            <width>81</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Core winding
+area [mm^2]</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="FrequencyValue">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>390</y>
+            <width>51</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="FrequencyLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>390</y>
+            <width>91</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Frequency [Hz]</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="CurrentDensityValue">
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>430</y>
+            <width>51</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="CurrentDensityLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>420</y>
+            <width>91</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Current density
+[A/mm^2]</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QGroupBox" name="InductorOutputBox_2">
+         <property name="geometry">
+          <rect>
+           <x>590</x>
+           <y>610</y>
+           <width>281</width>
+           <height>191</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>Inductor output</string>
+         </property>
+         <widget class="QLineEdit" name="WindingNumInductanceValue">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>30</y>
+            <width>71</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
          <widget class="QLabel" name="WindingNumInductanceLabel">
           <property name="geometry">
            <rect>
-            <x>270</x>
+            <x>10</x>
             <y>20</y>
             <width>91</width>
             <height>31</height>
@@ -1508,11 +1636,24 @@ Conductivity (σr)</string>
 number</string>
           </property>
          </widget>
+         <widget class="QLineEdit" name="GapValue">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>110</y>
+            <width>71</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
          <widget class="QLabel" name="GapLabel">
           <property name="geometry">
            <rect>
-            <x>270</x>
-            <y>70</y>
+            <x>10</x>
+            <y>100</y>
             <width>81</width>
             <height>31</height>
            </rect>
@@ -1522,133 +1663,27 @@ number</string>
 gap [mm]</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="CoreCrossSectionInductanceValue">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>190</y>
-            <width>113</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="BmaxInductanceValue">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>110</y>
-            <width>113</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="CurrentMaxValue">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>70</y>
-            <width>113</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="InductanceValue">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>30</y>
-            <width>113</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="WindingNumInductanceValue">
-          <property name="geometry">
-           <rect>
-            <x>360</x>
-            <y>30</y>
-            <width>113</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="GapValue">
-          <property name="geometry">
-           <rect>
-            <x>360</x>
-            <y>70</y>
-            <width>113</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_2">
-          <property name="geometry">
-           <rect>
-            <x>30</x>
-            <y>220</y>
-            <width>81</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Current density
-[A/mm^2]</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="CurrentDensityInductanceValue">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>230</y>
-            <width>113</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="PrimaryWireCrossSectionSelectedlabel_2">
-          <property name="geometry">
-           <rect>
-            <x>270</x>
-            <y>250</y>
-            <width>101</width>
-            <height>51</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Wire
-cross section
-Selected (mm^2)</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="WireCrossSectionSelectedInductanceValue">
-          <property name="geometry">
-           <rect>
-            <x>370</x>
-            <y>270</y>
-            <width>101</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
          <widget class="QLineEdit" name="WireCrossSectionInductanceValue">
           <property name="enabled">
            <bool>false</bool>
           </property>
           <property name="geometry">
            <rect>
-            <x>140</x>
-            <y>270</y>
-            <width>111</width>
+            <x>110</x>
+            <y>70</y>
+            <width>71</width>
             <height>20</height>
            </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
           </property>
          </widget>
          <widget class="QLabel" name="PrimaryWireCrosSectionlabel_2">
           <property name="geometry">
            <rect>
-            <x>30</x>
-            <y>250</y>
+            <x>10</x>
+            <y>50</y>
             <width>101</width>
             <height>51</height>
            </rect>
@@ -1658,27 +1693,32 @@ Selected (mm^2)</string>
 section (mm^2)</string>
           </property>
          </widget>
-         <widget class="QLabel" name="FrequencyInductorLabel">
+         <widget class="QLineEdit" name="WireCrossSectionSelectedInductanceValue">
           <property name="geometry">
            <rect>
-            <x>30</x>
+            <x>110</x>
             <y>150</y>
-            <width>91</width>
-            <height>16</height>
+            <width>71</width>
+            <height>20</height>
            </rect>
           </property>
           <property name="text">
-           <string>Frequency [Hz]</string>
+           <string>0.0</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="FrequencyInductanceValue">
+         <widget class="QLabel" name="PrimaryWireCrossSectionSelectedlabel_2">
           <property name="geometry">
            <rect>
-            <x>140</x>
-            <y>150</y>
-            <width>113</width>
-            <height>20</height>
+            <x>10</x>
+            <y>130</y>
+            <width>101</width>
+            <height>51</height>
            </rect>
+          </property>
+          <property name="text">
+           <string>Wire
+cross section
+Selected (mm^2)</string>
           </property>
          </widget>
         </widget>
@@ -1739,7 +1779,7 @@ section (mm^2)</string>
 FEMM model</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="SimplifiedWireModelCheckBox">
+   <widget class="QCheckBox" name="SimplifiedWireModelValue">
     <property name="geometry">
      <rect>
       <x>540</x>

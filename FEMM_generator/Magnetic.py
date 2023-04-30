@@ -263,7 +263,7 @@ class FEMMMagneticFormat:
                     y = y_down + margin * 2 + (margin * current_winding_y_pos)\
                         + (dia_insulation * current_winding_y_pos) + (dia_insulation / 2)
                     draw_circle(x, y, dia_insulation, self.Nodes, self.ArcSegments)
-                    self.BlocksLabels.append([x - (dia / 2), y, block_number, -1, 1, 0, 0, 1, 1])
+                    self.BlocksLabels.append([x, y, block_number, -1, 1, 0, 0, 1, 1])
 
                     x = x_right + ((center - x_right) * 2) + margin * 2\
                         + ((4 * margin + layer_thickness) * current_winding_x_pos)\
@@ -271,7 +271,7 @@ class FEMMMagneticFormat:
                     y = y_down + margin * 2 + (margin * current_winding_y_pos)\
                         + (dia_insulation * current_winding_y_pos) + (dia_insulation / 2)
                     draw_circle(x, y, dia_insulation, self.Nodes, self.ArcSegments)
-                    self.BlocksLabels.append([x + (dia / 2), y, block_number, -1, 1, 0, 0, -1, 1])
+                    self.BlocksLabels.append([x, y, block_number, -1, 1, 0, 0, -1, 1])
 
                     current_winding_y_pos += 1
                     wireNum += 1
@@ -304,8 +304,6 @@ class FEMMMagneticFormat:
                 draw_polygon(winding_polygon_left, self.Nodes, self.Segments)
                 self.BlocksLabels.append([first_x - (dia_insulation / 2), first_y
                                           + (dia_insulation / 2), block_number, -1, 1, 0, 0, windingNum, 1])
-
-                node_number = len(self.Nodes)
 
                 x = first_mirror_x
                 y = y_down + margin * 2 + (margin * y_poz)\
@@ -374,12 +372,12 @@ class FEMMMagneticFormat:
         x = x_right - margin
         y = y_down + margin
         block_number = self.search_block_number('Air')
-        block_label_core = [x - margin, y - margin, block_number, -1, 0, 0, 0, 0, 0]
+        block_label_core = [x, y, block_number, -1, 0, 0, 0, 0, 0]
         self.BlocksLabels.append(block_label_core)
 
         x = x_right + ((center - x_right) * 2) + margin
         y = y_down + margin
-        block_label_core = [x + margin, y - margin, block_number, -1, 0, 0, 0, 0, 0]
+        block_label_core = [x + margin, y + margin, block_number, -1, 0, 0, 0, 0, 0]
         self.BlocksLabels.append(block_label_core)
 
     def set_frequency(self, frequency):

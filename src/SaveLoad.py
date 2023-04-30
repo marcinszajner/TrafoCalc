@@ -30,7 +30,12 @@ class SaveLoad:
             for key, value in a.items():
                 loaded_data = data[key]
                 main_menu_transformer_values = getattr(main_window_obj, key + name)
-                if getattr(main_menu_transformer_values, 'setText', None):
+                if getattr(main_menu_transformer_values, 'setChecked', None):
+                    if loaded_data == 0.0:
+                        main_menu_transformer_values.setChecked(False)
+                    else:
+                        main_menu_transformer_values.setChecked(True)
+                elif getattr(main_menu_transformer_values, 'setText', None):
                     main_menu_transformer_values.setText(str(loaded_data))
                 elif getattr(main_menu_transformer_values, 'setCurrentText', None):
                     main_menu_transformer_values.setCurrentText(str(loaded_data))

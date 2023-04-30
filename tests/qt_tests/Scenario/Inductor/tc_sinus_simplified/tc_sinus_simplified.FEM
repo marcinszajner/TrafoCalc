@@ -1,0 +1,146 @@
+[Format] = 4.0
+[Frequency] = 100000.0
+[Precision] = 1e-09
+[MinAngle] = 30
+[DoSmartMesh] = 1
+[Depth] = 18.9
+[LengthUnits] = millimeters
+[ProblemType] = planar
+[Coordinates] = cartesian
+[ACSolver] = 0
+[PrevType] = 0
+[PrevSoln] = ''
+[Comment] = "Add comments here."
+[PointProps] = 0
+[BdryProps] = 0
+[BlockProps] = 3
+  <BeginBlock>
+    <BlockName> = "none"
+    <Mu_x> = 19000.0
+    <Mu_y> = 19000.0
+    <H_c> = 0
+    <H_cAngle> = 0
+    <J_re> = 0
+    <J_im> = 0
+    <Sigma> = 2e-06
+    <d_lam> = 0
+    <Phi_h> = 0
+    <Phi_hx> = 0
+    <Phi_hy> = 0
+    <LamType> = 0
+    <LamFill> = 1
+    <NStrands> = 0
+    <WireD> = 0
+    <BHPoints> = 0
+  <EndBlock>
+  <BeginBlock>
+    <BlockName> = "Air"
+    <Mu_x> = 1
+    <Mu_y> = 1
+    <H_c> = 0
+    <H_cAngle> = 0
+    <J_re> = 0
+    <J_im> = 0
+    <Sigma> = 0.0
+    <d_lam> = 0
+    <Phi_h> = 0
+    <Phi_hx> = 0
+    <Phi_hy> = 0
+    <LamType> = 0
+    <LamFill> = 1
+    <NStrands> = 0
+    <WireD> = 0
+    <BHPoints> = 0
+  <EndBlock>
+  <BeginBlock>
+    <BlockName> = "Copper_primary"
+    <Mu_x> = 1
+    <Mu_y> = 1
+    <H_c> = 0
+    <H_cAngle> = 0
+    <J_re> = 0
+    <J_im> = 0
+    <Sigma> = 58.0
+    <d_lam> = 0
+    <Phi_h> = 0
+    <Phi_hx> = 0
+    <Phi_hy> = 0
+    <LamType> = 3
+    <LamFill> = 1
+    <NStrands> = 1
+    <WireD> = 1.1894154827269934
+    <BHPoints> = 0
+  <EndBlock>
+[CircuitProps] = 1
+  <BeginCircuit>
+    <CircuitName> = Primary
+    <TotalAmps_re> = 5.0
+    <TotalAmps_im> = 0
+    <CircuitType> = 1
+  <EndCircuit>
+[NumPoints] = 28
+0	0	0	0
+0	55.2	0	0
+54.5	55.2	0	0
+54.5	0	0	0
+6.65	7.4	0	0
+17.8	7.4	0	0
+17.8	27.116104	0	0
+36.7	27.116104	0	0
+36.7	7.4	0	0
+47.85	7.4	0	0
+47.85	47.8	0	0
+36.7	47.8	0	0
+36.7	28.083896	0	0
+17.8	28.083896	0	0
+17.8	47.8	0	0
+6.65	47.8	0	0
+-81.75	-82.80000000000001	0	0
+136.25	-82.80000000000001	0	0
+136.25	138.0	0	0
+-81.75	138.0	0	0
+17.78	17.419999999999998	0	0
+17.78	35.425999999999995	0	0
+16.5896	35.425999999999995	0	0
+16.5896	17.419999999999998	0	0
+36.720000000000006	17.419999999999998	0	0
+36.720000000000006	35.425999999999995	0	0
+37.9104	35.425999999999995	0	0
+37.9104	17.419999999999998	0	0
+[NumSegments] = 28
+0	1	-1	0	0	0
+1	2	-1	0	0	0
+2	3	-1	0	0	0
+3	0	-1	0	0	0
+4	5	-1	0	0	0
+5	6	-1	0	0	0
+6	7	-1	0	0	0
+7	8	-1	0	0	0
+8	9	-1	0	0	0
+9	10	-1	0	0	0
+10	11	-1	0	0	0
+11	12	-1	0	0	0
+12	13	-1	0	0	0
+13	14	-1	0	0	0
+14	15	-1	0	0	0
+15	4	-1	0	0	0
+16	17	-1	0	0	0
+17	18	-1	0	0	0
+18	19	-1	0	0	0
+19	16	-1	0	0	0
+20	21	-1	0	0	0
+21	22	-1	0	0	0
+22	23	-1	0	0	0
+23	20	-1	0	0	0
+24	25	-1	0	0	0
+25	26	-1	0	0	0
+26	27	-1	0	0	0
+27	24	-1	0	0	0
+[NumArcSegments] = 0
+[NumHoles] = 0
+[NumBlockLabels] = 5
+27.25	41.400000000000006	1	-1	0	0	0	0	0
+27.25	82.80000000000001	2	-1	0	0	0	0	0
+17.184800000000003	18.015199999999997	3	-1	1	0	0	15	1
+37.315200000000004	18.015199999999997	3	-1	1	0	0	-15	1
+17.785	17.415	2	-1	0	0	0	0	0

@@ -208,22 +208,31 @@ class FEMMElectrostaticFormat:
         block_number_bobbin = self.search_block_number(input_data.BobbinMaterial)
         if block_number_bobbin == -1:
             raise Exception('failed search block')
+        if BobbinX != 0 and BobbinY != 0 and \
+           BobbinX > margin and BobbinY > margin:
+            bobbin = []
+            bobbin.append([x_left, y_down])
+            bobbin.append([x_right, y_down])
+            bobbin.append([x_right, y_up])
+            bobbin.append([x_left, y_up - margin])
+            bobbin.append([x_left, y_up - BobbinY])
+            bobbin.append([x_right - BobbinX, y_up - BobbinY])
+            bobbin.append([x_right - BobbinX, y_down + BobbinY])
+            bobbin.append([x_left, y_down + BobbinY])
+            draw_polygon(bobbin, self.Nodes, self.Segments, [0])
+            # This segment must be add as workaround
+            self.Segments.append([node_number + 4, node_number + 7, -1, 0, 0, 0, 1])
+            self.BlocksLabels.append([x_right - margin - (BobbinX / 2),
+                                      y_down + margin + (BobbinY / 2), block_number_bobbin,
+                                      -1, 1, 0, 0, 1, 1])
+        else:
+            bobbin = []
+            bobbin.append([x_left, y_down])
+            bobbin.append([x_right, y_down])
+            bobbin.append([x_right, y_up])
+            bobbin.append([x_left, y_up])
+            draw_polygon(bobbin, self.Nodes, self.Segments, [0])
 
-        bobbin = []
-        bobbin.append([x_left, y_down])
-        bobbin.append([x_right, y_down])
-        bobbin.append([x_right, y_up])
-        bobbin.append([x_left, y_up - margin])
-        bobbin.append([x_left, y_up - BobbinY])
-        bobbin.append([x_right - BobbinX, y_up - BobbinY])
-        bobbin.append([x_right - BobbinX, y_down + BobbinY])
-        bobbin.append([x_left, y_down + BobbinY])
-        draw_polygon(bobbin, self.Nodes, self.Segments, [0])
-        # This segment must be add as workaround
-        self.Segments.append([node_number + 4, node_number + 7, -1, 0, 0, 0, 1])
-        self.BlocksLabels.append([x_right - margin - (BobbinX / 2),
-                                  y_down + margin + (BobbinY / 2), block_number_bobbin,
-                                  -1, 1, 0, 0, 1, 1])
         y_up -= BobbinY + input_data.Margine
         y_down += BobbinY + input_data.Margine
         x_right -= BobbinX
@@ -257,9 +266,10 @@ class FEMMElectrostaticFormat:
                     y = y_down + margin * 2 + (margin * current_winding_y_pos)\
                         + (dia_insulation * current_winding_y_pos) + (dia_insulation / 2)
 
-                    draw_circle(x, y, dia_insulation, self.Nodes, self.ArcSegments, [0])
-                    self.BlocksLabels.append([x + (insulation_thickness / 2) + (dia / 2), y, block_number_insulation,
-                                              -1, 1, 0, 0, 1, 1])
+                    if dia_insulation != dia:
+                        draw_circle(x, y, dia_insulation, self.Nodes, self.ArcSegments, [0])
+                        self.BlocksLabels.append([x + (insulation_thickness / 2) + (dia / 2), y,
+                                                  block_number_insulation, -1, 1, 0, 0, 1, 1])
 
                     draw_circle(x, y, dia, self.Nodes, self.ArcSegments, [wireNum + 1])
                     self.BlocksLabels.append([x, y, block_number, -1, 1, 0, 0, 1, 1])
@@ -267,17 +277,18 @@ class FEMMElectrostaticFormat:
                     current_winding_y_pos += 1
                     wireNum += 1
 
-                insulation_layer = []
-                insulation_layer.append([x - (dia_insulation / 2) - margin, y_down + margin - input_data.Margine])
-                insulation_layer.append([x - (dia_insulation / 2) - margin, y_up - margin + input_data.Margine])
-                insulation_layer.append([x - (dia_insulation / 2) - margin - layer_thickness,
-                                        y_up - margin + input_data.Margine])
-                insulation_layer.append([x - (dia_insulation / 2) - margin - layer_thickness,
+                if layer_thickness > margin:
+                    insulation_layer = []
+                    insulation_layer.append([x - (dia_insulation / 2) - margin, y_down + margin - input_data.Margine])
+                    insulation_layer.append([x - (dia_insulation / 2) - margin, y_up - margin + input_data.Margine])
+                    insulation_layer.append([x - (dia_insulation / 2) - margin - layer_thickness,
+                                            y_up - margin + input_data.Margine])
+                    insulation_layer.append([x - (dia_insulation / 2) - margin - layer_thickness,
                                         y_down + margin - input_data.Margine])
-                draw_polygon(insulation_layer, self.Nodes, self.Segments, [0])
-                self.BlocksLabels.append([x - (dia_insulation / 2) - margin - (layer_thickness / 2),
-                                          (y_up + y_down) / 2, block_number_layer_insulation,
-                                          -1, 1, 0, 0, 1, 1])
+                    draw_polygon(insulation_layer, self.Nodes, self.Segments, [0])
+                    self.BlocksLabels.append([x - (dia_insulation / 2) - margin - (layer_thickness / 2),
+                                            (y_up + y_down) / 2, block_number_layer_insulation,
+                                            -1, 1, 0, 0, 1, 1])
 
                 current_winding_x_pos += 1
                 current_winding_y_pos = 0
@@ -304,18 +315,19 @@ class FEMMElectrostaticFormat:
                 draw_polygon(winding_polygon, self.Nodes, self.Segments, [current_winding_x_pos + 1])
                 self.BlocksLabels.append([x - (dia_insulation / 2), (y + y_down) / 2, block_number, -1, 1, 0, 0, 1, 1])
 
-                insulation_layer = []
-                x = x_right - margin * 2 - ((4 * margin + layer_thickness + dia_insulation) * current_winding_x_pos)
-                insulation_layer.append([x - dia_insulation - (margin * 2), y_down + margin - input_data.Margine])
-                insulation_layer.append([x - dia_insulation - (margin * 2), y_up - margin + input_data.Margine])
-                insulation_layer.append([x - dia_insulation - (margin * 2) - layer_thickness,
-                                        y_up - margin + input_data.Margine])
-                insulation_layer.append([x - dia_insulation - (margin * 2) - layer_thickness,
-                                        y_down + margin - input_data.Margine])
-                draw_polygon(insulation_layer, self.Nodes, self.Segments, [0])
-                self.BlocksLabels.append([x - dia_insulation - margin - (layer_thickness / 2),
-                                          (y_up - y_down) / 2, block_number_layer_insulation,
-                                          -1, 1, 0, 0, 1, 1])
+                if layer_thickness > margin:
+                    insulation_layer = []
+                    x = x_right - margin * 2 - ((4 * margin + layer_thickness + dia_insulation) * current_winding_x_pos)
+                    insulation_layer.append([x - dia_insulation - (margin * 2), y_down + margin - input_data.Margine])
+                    insulation_layer.append([x - dia_insulation - (margin * 2), y_up - margin + input_data.Margine])
+                    insulation_layer.append([x - dia_insulation - (margin * 2) - layer_thickness,
+                                            y_up - margin + input_data.Margine])
+                    insulation_layer.append([x - dia_insulation - (margin * 2) - layer_thickness,
+                                            y_down + margin - input_data.Margine])
+                    draw_polygon(insulation_layer, self.Nodes, self.Segments, [0])
+                    self.BlocksLabels.append([x - dia_insulation - margin - (layer_thickness / 2),
+                                            (y_up - y_down) / 2, block_number_layer_insulation,
+                                            -1, 1, 0, 0, 1, 1])
 
                 current_winding_x_pos += 1
                 self.create_conductor_block('Primary' + str(wireNum),
@@ -331,7 +343,7 @@ class FEMMElectrostaticFormat:
 
         x = x_right + ((center - x_right) * 2) + margin
         y = y_down + margin
-        block_label_core = [x + margin, y - margin, block_number, -1, 0, 0]
+        block_label_core = [x, y, block_number, -1, 0, 0]
         self.BlocksLabels.append(block_label_core)
 
     def create_electrostatic_model(self, input_data, output_data, file_name, is_simple_wire):
