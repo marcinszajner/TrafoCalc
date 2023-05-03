@@ -50,7 +50,7 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
         #try:
             transformer_value = self.parse_main_window_value_to_transformer_class()
             self.Transformer.update_params(transformer_value)
-            if self.Transformer.TransformerValue.ModelType == 'Magnetic field simulation'or \
+            if self.Transformer.TransformerValue.ModelType == 'Magnetic field simulation' or \
                self.Transformer.TransformerValue.ModelType == 'Electrostatic field simulation':
 
                 self.Transformer.validate_input_data_basic_simulation()

@@ -202,8 +202,8 @@ class Transformer:
 
         cross_section = curr / curr_dens
 
-        N = (ind * curr)/(Ae * Bmax)
-        lg = (uo * N * curr)/Bmax
+        N = (ind * curr) / (Ae * Bmax)
+        lg = (uo * N * curr) / Bmax
 
         self.TransformerValue.Gap = lg * 1000
         self.TransformerValue.WindingNumInductance = N

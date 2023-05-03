@@ -10,7 +10,7 @@
     "OutputPower": 0.0,
     "OutputVoltage": 0.0,
     "MagneticPathLength": 127.0,
-    "CorePermeability": 19000.0,
+    "CorePermeability": 1900.0,
     "CoreConductivity": 2.0,
     "CorePermittivity": 100000.0,
     "PrimaryWireInsulationThickness": 0.0,
@@ -50,5 +50,6 @@
     "Gap": 1.93558,
     "WireCrossSectionInductance": 0.5,
     "WireCrossSectionSelectedInductance": 0.0,
-    "SimplifiedWireModel": 0.0
+    "SimplifiedWireModel": 0.0,
+    "PrimaryWireCrossSectionInductance": 1.1111111111111112
 }

@@ -161,7 +161,7 @@ class FEMMMagneticInductorFormat:
         InsideNode1_1_corX = round((SizeA - SizeB) / 2, 6)
         InsideNode1_1_corY = round(SizeD - SizeE, 6)
         distance_tmp = round((SizeB - SizeC) / 2, 6)
-        SizeE_with_gap = SizeE - gap
+        SizeE_with_gap = SizeE - (gap / 2)
 
         self.WindingBoundary['x_left'] = InsideNode1_1_corX
         self.WindingBoundary['x_right'] = InsideNode1_1_corX + distance_tmp
