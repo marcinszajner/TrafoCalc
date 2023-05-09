@@ -196,14 +196,20 @@ class Transformer:
         ind = self.TransformerValue.Inductance / 1000
         curr = self.TransformerValue.CurrentMax
         Bmax = self.TransformerValue.Bmax / 1000
+        SizeC = self.TransformerValue.SizeC
+        SizeF = self.TransformerValue.SizeF
+        CoreRelu = ((self.TransformerValue.MagneticPathLength / 1000) / self.TransformerValue.CorePermeability)
         uo = 0.0000012563706
-        Ae = self.TransformerValue.CoreCrossSection / 1000000
+
+        Ae = SizeC * SizeF / 1000000
         curr_dens = self.TransformerValue.CurrentDensity
 
         cross_section = curr / curr_dens
 
-        N = (ind * curr) / (Ae * Bmax)
-        lg = (uo * N * curr) / Bmax
+        for x in range(10):
+            N = (ind * curr) / (Ae * Bmax)
+            lg = ((uo * N * curr) / Bmax) - CoreRelu
+            Ae = (SizeC + lg) * (SizeF + lg) / 1000000
 
         self.TransformerValue.Gap = lg * 1000
         self.TransformerValue.WindingNumInductance = N
