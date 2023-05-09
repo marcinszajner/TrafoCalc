@@ -1,12 +1,18 @@
-# TrafoCalc
+# Table of Contents
+1. [Requirements](#Requirements)
+2. [How to use](#Howtouse)
+    1. [Transformer](#transformer)
+    2. [Inductance](#inductance)
+3. [Equations](#equations)
 
-Requirements
+## Requirements <a name="Requirements"></a>
 Python 3.8.5 <
 
 Calculator should work on linux and windowsm
-however FEMM not work on linux yet. 
+however FEMM not work on linux. 
 
-How to use
+## How to use <a name="Howtouse"></a>
+
 
 1. Clone repository and run cmd in TrafoCalc folder.
 2. check python by type in cmd "python -- version", if it is 3.8.5
@@ -31,3 +37,37 @@ Example output of inductor model in FEMM
 
 ![Screenshot](image/window_example.png)
 Main window with loaded example
+
+## Equations <a name="equations"></a>
+
+### Transformer <a name="transformer"></a>
+### Inductance <a name="inductance"></a>
+Assumptions:
+1. core reluctance estimated by full magnetic length
+2. Gap effective cross-section caused by flux fringing estimated as A = (B + lg)(C + lg) where B and C are the side of the column where the gap is and lg gap lenth
+3. Permeability of core not change with flux density. B-H curve could be added in FEMM
+4. Equations are more accurate the smaller the gap is
+
+Based on the equations from the video:
+https://www.youtube.com/watch?v=GOGdEgyXkO8&t=227s
+
+
+$$ N = {L I_{max} \over A B_{max}} $$
+
+$$ l_g = {μ_oNI_{max} \over B_{max}} - {l_c \over μ_r} $$
+
+Where:
+
+N - number of turns
+
+Imax - peak current amplitude
+
+A - gap effective cross-section, 1st it's core cross-section, but after calculate lg, A is recalculated then angain lg. It's done 10 time for better estimation gap effective cross-section
+
+Bmax - peak flux density
+
+lg - gap length
+
+μo - permeability of free space, μr - relative permeability of the material
+
+lc - magnetic core path length
