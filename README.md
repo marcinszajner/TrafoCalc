@@ -41,6 +41,34 @@ Main window with loaded example
 ## Equations <a name="equations"></a>
 
 ### Transformer <a name="transformer"></a>
+Assumptions:
+1. Magnetic flux leakage are not taken into account
+2. Permeability of core not change with flux density. B-H curve could be added in FEMM
+3. Transformator work in symemetrical operation. That means starting point is not 0° of the waveform the input of the transformer, but 90°.
+
+Based on the equations from the video:
+https://www.youtube.com/watch?v=3nfqBzPMknY&t=463s
+
+$$ N = {{\int_{0}^{\pi} U(t)dt} \over {2B_{max}A_e}} $$
+
+$$ I_{max} = {{\int_{0}^{\pi} U(t)dt l_c} \over {2N^2 A_e μ_r μ_o}} $$
+
+Where:
+
+N - number of turns
+
+U(t) - function of input voltage
+
+Bmax - peak flux density
+
+Ae - core cross section
+
+Imax - peak current amplitude
+
+lc - magnetic core path length
+
+μo - permeability of free space, μr - relative permeability of the material
+
 ### Inductance <a name="inductance"></a>
 Assumptions:
 1. core reluctance estimated by full magnetic length
@@ -49,6 +77,7 @@ Assumptions:
 4. Equations are more accurate the smaller the gap is
 
 Based on the equations from the video:
+
 https://www.youtube.com/watch?v=GOGdEgyXkO8&t=227s
 
 
