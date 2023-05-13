@@ -1,9 +1,9 @@
 # Table of Contents
 1. [Requirements](#Requirements)
 2. [How to use](#Howtouse)
+3. [Equations](#equations)
     1. [Transformer](#transformer)
     2. [Inductance](#inductance)
-3. [Equations](#equations)
 
 ## Requirements <a name="Requirements"></a>
 Python 3.8.5 <
