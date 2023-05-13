@@ -143,6 +143,7 @@ class Transformer:
         else:
             Primary_winding = self.TransformerOutputValue.PrimaryWinding
 
+        #divided by 2, because result is delta current, so max value is half of it
         MagnetizationCurrentMax = (VoltSecond*Magnetic_path_lenght) / \
                                   (Primary_winding * Primary_winding * A_e * Permability*2)
 
