@@ -40,7 +40,7 @@ class TransformerValueClass:
         self.SizeF = 0
         self.CoreMaterialName = 'Core name'
         self.BobbinXmargine = 0
-        self.BobbinYmargine = 0
+        self.BobbinY1margine = 0
 
         self.ModelType = ''
 
@@ -52,7 +52,7 @@ class TransformerValueClass:
         self.BobbinMaterialPermittivity = 0
         self.BetweenWireLayerInsulationMaterial = 'new material'
         self.BetweenWireLayerInsulationMaterialPermittivity = 0
-        self.Margine = 0
+        self.BobbinY2margine = 0
         self.BetweenWireLayerInsulationThickness = 0
 
         #inductor params

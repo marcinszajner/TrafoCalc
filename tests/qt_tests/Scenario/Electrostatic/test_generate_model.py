@@ -1,6 +1,5 @@
 import pytest
-from PyQt6 import QtCore
-import keyboard
+from tests.qt_tests.Scenario.common import load_file
 import filecmp
 import os
 
@@ -16,12 +15,8 @@ def TrafoCalc(qtbot):
 def test_normal_model(TrafoCalc):
     name = 'tc_sinus_normal'
     path = 'tests\\qt_tests\\Scenario\\Electrostatic\\' + name + '\\'
-    QtCore.QTimer.singleShot(50, lambda: keyboard.write(path + name + '.json'))
-    QtCore.QTimer.singleShot(150, lambda: keyboard.send('enter'))
-    QtCore.QTimer.singleShot(1000, lambda: keyboard.write(path + name + '.FEE'))
-    QtCore.QTimer.singleShot(1200, lambda: keyboard.send('enter'))
-    QtCore.QTimer.singleShot(1400, lambda: keyboard.send('tab'))
-    QtCore.QTimer.singleShot(1800, lambda: keyboard.send('enter'))
+    extension = '.FEE'
+    load_file(path, name, extension)
     TrafoCalc.load_state()
     TrafoCalc.run_calc()
     TrafoCalc.save_FEMM_model()
@@ -35,12 +30,8 @@ def test_normal_model(TrafoCalc):
 def test_simplified_model(TrafoCalc):
     name = 'tc_sinus_simplified'
     path = 'tests\\qt_tests\\Scenario\\Electrostatic\\' + name + '\\'
-    QtCore.QTimer.singleShot(50, lambda: keyboard.write(path + name + '.json'))
-    QtCore.QTimer.singleShot(150, lambda: keyboard.send('enter'))
-    QtCore.QTimer.singleShot(1000, lambda: keyboard.write(path + name + '.FEE'))
-    QtCore.QTimer.singleShot(1200, lambda: keyboard.send('enter'))
-    QtCore.QTimer.singleShot(1400, lambda: keyboard.send('tab'))
-    QtCore.QTimer.singleShot(1800, lambda: keyboard.send('enter'))
+    extension = '.FEE'
+    load_file(path, name, extension)
     TrafoCalc.load_state()
     TrafoCalc.run_calc()
     TrafoCalc.save_FEMM_model()

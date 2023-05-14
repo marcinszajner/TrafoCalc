@@ -189,7 +189,7 @@ class FEMMElectrostaticFormat:
         Conductor_block.Conductor_block_dict["<Vc> = "] = voltage
         self.ConductorProps.append(Conductor_block.Conductor_block_dict)
 
-    def create_wire_primary(self, input_data, output_data, BobbinX, BobbinY, voltage, primary_dia, is_simple_wire):
+    def create_wire_primary(self, input_data, output_data, BobbinX, BobbinY1, BobbinY2, voltage, primary_dia, is_simple_wire):
         x_left = self.WindingBoundary["x_left"]
         x_right = self.WindingBoundary["x_right"]
         y_down = self.WindingBoundary["y_down"]
@@ -208,22 +208,22 @@ class FEMMElectrostaticFormat:
         block_number_bobbin = self.search_block_number(input_data.BobbinMaterial)
         if block_number_bobbin == -1:
             raise Exception('failed search block')
-        if BobbinX != 0 and BobbinY != 0 and \
-           BobbinX > margin and BobbinY > margin:
+        if BobbinX != 0 and BobbinY1 != 0 and BobbinY2 != 0 and \
+           BobbinX > margin and BobbinY1 > margin and BobbinY2 > margin:
             bobbin = []
             bobbin.append([x_left, y_down])
             bobbin.append([x_right, y_down])
             bobbin.append([x_right, y_up])
             bobbin.append([x_left, y_up - margin])
-            bobbin.append([x_left, y_up - BobbinY])
-            bobbin.append([x_right - BobbinX, y_up - BobbinY])
-            bobbin.append([x_right - BobbinX, y_down + BobbinY])
-            bobbin.append([x_left, y_down + BobbinY])
+            bobbin.append([x_left, y_up - BobbinY1])
+            bobbin.append([x_right - BobbinX, y_up - BobbinY1])
+            bobbin.append([x_right - BobbinX, y_down + BobbinY2])
+            bobbin.append([x_left, y_down + BobbinY2])
             draw_polygon(bobbin, self.Nodes, self.Segments, [0])
             # This segment must be add as workaround
             self.Segments.append([node_number + 4, node_number + 7, -1, 0, 0, 0, 1])
             self.BlocksLabels.append([x_right - margin - (BobbinX / 2),
-                                      y_down + margin + (BobbinY / 2), block_number_bobbin,
+                                      y_down + margin + (BobbinY2 / 2), block_number_bobbin,
                                       -1, 1, 0, 0, 1, 1])
         else:
             bobbin = []
@@ -233,8 +233,8 @@ class FEMMElectrostaticFormat:
             bobbin.append([x_left, y_up])
             draw_polygon(bobbin, self.Nodes, self.Segments, [0])
 
-        y_up -= BobbinY + input_data.Margine
-        y_down += BobbinY + input_data.Margine
+        y_up -= BobbinY1
+        y_down += BobbinY2
         x_right -= BobbinX
 
         wireNum = 0
@@ -251,7 +251,7 @@ class FEMMElectrostaticFormat:
         dia = primary_dia
         dia_insulation = dia + (2*insulation_thickness)
 
-        num_of_winding_y = int((y_up - y_down) / (dia_insulation + margin)) - 1
+        num_of_winding_y = int((y_up - y_down) / (dia_insulation + margin))
         current_winding_y_pos = 0
         current_winding_x_pos = 0
 
@@ -279,12 +279,12 @@ class FEMMElectrostaticFormat:
 
                 if layer_thickness > margin:
                     insulation_layer = []
-                    insulation_layer.append([x - (dia_insulation / 2) - margin, y_down + margin - input_data.Margine])
-                    insulation_layer.append([x - (dia_insulation / 2) - margin, y_up - margin + input_data.Margine])
+                    insulation_layer.append([x - (dia_insulation / 2) - margin, y_down + margin])
+                    insulation_layer.append([x - (dia_insulation / 2) - margin, y_up - margin])
                     insulation_layer.append([x - (dia_insulation / 2) - margin - layer_thickness,
-                                            y_up - margin + input_data.Margine])
+                                            y_up - margin])
                     insulation_layer.append([x - (dia_insulation / 2) - margin - layer_thickness,
-                                        y_down + margin - input_data.Margine])
+                                        y_down + margin])
                     draw_polygon(insulation_layer, self.Nodes, self.Segments, [0])
                     self.BlocksLabels.append([x - (dia_insulation / 2) - margin - (layer_thickness / 2),
                                             (y_up + y_down) / 2, block_number_layer_insulation,
@@ -318,12 +318,12 @@ class FEMMElectrostaticFormat:
                 if layer_thickness > margin:
                     insulation_layer = []
                     x = x_right - margin * 2 - ((4 * margin + layer_thickness + dia_insulation) * current_winding_x_pos)
-                    insulation_layer.append([x - dia_insulation - (margin * 2), y_down + margin - input_data.Margine])
-                    insulation_layer.append([x - dia_insulation - (margin * 2), y_up - margin + input_data.Margine])
+                    insulation_layer.append([x - dia_insulation - (margin * 2), y_down + margin])
+                    insulation_layer.append([x - dia_insulation - (margin * 2), y_up - margin])
                     insulation_layer.append([x - dia_insulation - (margin * 2) - layer_thickness,
-                                            y_up - margin + input_data.Margine])
+                                            y_up - margin])
                     insulation_layer.append([x - dia_insulation - (margin * 2) - layer_thickness,
-                                            y_down + margin - input_data.Margine])
+                                            y_down + margin])
                     draw_polygon(insulation_layer, self.Nodes, self.Segments, [0])
                     self.BlocksLabels.append([x - dia_insulation - margin - (layer_thickness / 2),
                                             (y_up - y_down) / 2, block_number_layer_insulation,
@@ -380,7 +380,8 @@ class FEMMElectrostaticFormat:
             self.create_wire_primary(input_data,
                                      output_data,
                                      float(input_data.BobbinXmargine),
-                                     float(input_data.BobbinYmargine),
+                                     float(input_data.BobbinY1margine),
+                                     float(input_data.BobbinY2margine),
                                      input_data.InputVoltage,
                                      primary_dia,
                                      is_simple_wire)

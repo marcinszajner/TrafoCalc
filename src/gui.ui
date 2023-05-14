@@ -373,7 +373,7 @@
            <string>0.0</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="BobbinYmargineValue">
+         <widget class="QLineEdit" name="BobbinY1margineValue">
           <property name="geometry">
            <rect>
             <x>520</x>
@@ -386,7 +386,7 @@
            <string>0.0</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="MargineValue">
+         <widget class="QLineEdit" name="BobbinY2margineValue">
           <property name="geometry">
            <rect>
             <x>520</x>
@@ -399,19 +399,17 @@
            <string>0.0</string>
           </property>
          </widget>
-         <widget class="QLabel" name="MargineLabel">
+         <widget class="QLabel" name="bobbinY2label">
           <property name="geometry">
            <rect>
             <x>470</x>
             <y>160</y>
             <width>51</width>
-            <height>51</height>
+            <height>41</height>
            </rect>
           </property>
           <property name="text">
-           <string>Winding
-margine
-[mm]</string>
+           <string>Y2 [mm]</string>
           </property>
          </widget>
          <widget class="QLabel" name="bobbinLabel">
@@ -454,7 +452,7 @@ dimensions</string>
            <string>X [mm]</string>
           </property>
          </widget>
-         <widget class="QLabel" name="bobbinYlabel">
+         <widget class="QLabel" name="bobbinY1label">
           <property name="geometry">
            <rect>
             <x>470</x>
@@ -464,7 +462,7 @@ dimensions</string>
            </rect>
           </property>
           <property name="text">
-           <string>Y [mm]</string>
+           <string>Y1 [mm]</string>
           </property>
          </widget>
          <widget class="QLabel" name="EECoreImageLabel">

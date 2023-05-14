@@ -226,7 +226,7 @@ class FEMMMagneticInductorFormat:
         circuit_block.Circuit_block_dict["<TotalAmps_re> = "] = current
         self.CircuitProps.append(circuit_block.Circuit_block_dict)
 
-    def create_wire_primary(self, input_data, output_data, BobbinX, BobbinY, is_simple_wire):
+    def create_wire_primary(self, input_data, output_data, BobbinX, BobbinY1, BobbinY2, is_simple_wire):
         x_left = self.WindingBoundary["x_left"]
         x_right = self.WindingBoundary["x_right"]
         y_down = self.WindingBoundary["y_down"]
@@ -241,8 +241,8 @@ class FEMMMagneticInductorFormat:
         #     windingNum = output_data.PrimaryWinding
         windingNum = int(input_data.WindingNumInductance)
 
-        y_up -= BobbinY + input_data.Margine
-        y_down += BobbinY + input_data.Margine
+        y_up -= BobbinY1
+        y_down += BobbinY2
         x_right -= BobbinX
 
         node_number = len(self.Nodes)
@@ -254,7 +254,7 @@ class FEMMMagneticInductorFormat:
         dia = round(self.Blocks[block_number - 1]["<WireD> = "], 4) + 0.001
         dia_insulation = dia + (2*insulation_thickness)
 
-        num_of_winding_y = int((y_up - y_down) / (dia_insulation + margin)) - 1
+        num_of_winding_y = int((y_up - y_down) / (dia_insulation + margin))
         current_winding_y_pos = 0
         current_winding_x_pos = 0
 
@@ -413,6 +413,7 @@ class FEMMMagneticInductorFormat:
             self.create_wire_primary(input_data,
                                      output_data,
                                      float(input_data.BobbinXmargine),
-                                     float(input_data.BobbinYmargine),
+                                     float(input_data.BobbinY1margine),
+                                     float(input_data.BobbinY2margine),
                                      is_simple_wire)
             self.save_FEMM_file(file_name)

@@ -78,8 +78,8 @@ def test_save_json(TrafoCalc):
     assert TrafoCalc.SizeEValue.text() == str(data['SizeE'])
     assert TrafoCalc.SizeFValue.text() == str(data['SizeF'])
     assert TrafoCalc.BobbinXmargineValue.text() == str(data['BobbinXmargine'])
-    assert TrafoCalc.BobbinYmargineValue.text() == str(data['BobbinYmargine'])
-    assert TrafoCalc.MargineValue.text() == str(data['Margine'])
+    assert TrafoCalc.BobbinY1margineValue.text() == str(data['BobbinY1margine'])
+    assert TrafoCalc.BobbinY2margineValue.text() == str(data['BobbinY2margine'])
     assert TrafoCalc.InductanceValue.text() == str(data['Inductance'])
     assert TrafoCalc.CurrentMaxValue.text() == str(data['CurrentMax'])
     assert TrafoCalc.WindingNumInductanceValue.text() == str(data['WindingNumInductance'])
@@ -135,8 +135,8 @@ def test_load_json(TrafoCalc):
     assert TrafoCalc.SizeEValue.text() == '20.2'
     assert TrafoCalc.SizeFValue.text() == '18.9'
     assert TrafoCalc.BobbinXmargineValue.text() == '2.0'
-    assert TrafoCalc.BobbinYmargineValue.text() == '2.0'
-    assert TrafoCalc.MargineValue.text() == '1.0'
+    assert TrafoCalc.BobbinY1margineValue.text() == '2.0'
+    assert TrafoCalc.BobbinY2margineValue.text() == '2.0'
     assert TrafoCalc.InductanceValue.text() == '0.05'
     assert TrafoCalc.CurrentMaxValue.text() == '10.0'
     assert TrafoCalc.WindingNumInductanceValue.text() == '28.0112'
