@@ -92,13 +92,29 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
                     self.ApResultLabel.setText('Pass')
                 self.ApResultLabel.setPalette(result_palette)
             elif self.Transformer.TransformerValue.ModelType == 'Inductance':
-                self.Transformer.Calculate_inductance()
+                self.Transformer.Calculate_inductor_gap_turns_wire_cross_section()
+                self.Transformer.Calculate_Ap_inductance()
                 WindingNumber = self.Transformer.TransformerValue.WindingNumInductance
                 gap = self.Transformer.TransformerValue.Gap
                 cross_section = self.Transformer.TransformerValue.PrimaryWireCrossSectionInductance
+                ApTheory = self.Transformer.TransformerOutputValue.ApTheoryInductance
+                ApCalculated = self.Transformer.TransformerOutputValue.ApCalculatedInductance
                 self.WindingNumInductanceValue.setText(str(float("{:.5e}".format(WindingNumber))))
                 self.WireCrossSectionInductanceValue.setText(str(float("{:.5e}".format(cross_section))))
                 self.GapValue.setText(str(float("{:.5e}".format(gap))))
+                self.ApTheoryInductanceValue.setText(str(float("{:.5e}".format(ApTheory))))
+                self.ApCalculatedInductanceValue.setText(str(float("{:.5e}".format(ApCalculated))))
+
+                result_palette = QPalette()
+                if float(self.ApCalculatedInductanceValue.text()) >= float(self.ApTheoryInductanceValue.text()):
+                    result_palette.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.WindowText,
+                                            QColor(240, 51, 65))
+                    self.ApResultInductanceLabel.setText('Fail')
+                else:
+                    result_palette.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.WindowText,
+                                            QColor(51, 240, 65))
+                    self.ApResultInductanceLabel.setText('Pass')
+                self.ApResultInductanceLabel.setPalette(result_palette)
 
         #except Exception as inst:
         #    print(inst.args)

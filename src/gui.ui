@@ -150,7 +150,7 @@
            <rect>
             <x>20</x>
             <y>50</y>
-            <width>91</width>
+            <width>101</width>
             <height>16</height>
            </rect>
           </property>
@@ -196,7 +196,7 @@
            <rect>
             <x>20</x>
             <y>80</y>
-            <width>91</width>
+            <width>101</width>
             <height>16</height>
            </rect>
           </property>
@@ -794,9 +794,9 @@ insulation material</string>
           <property name="geometry">
            <rect>
             <x>160</x>
-            <y>130</y>
+            <y>140</y>
             <width>101</width>
-            <height>61</height>
+            <height>51</height>
            </rect>
           </property>
           <property name="text">
@@ -864,13 +864,13 @@ section (mm^2)</string>
           <property name="geometry">
            <rect>
             <x>340</x>
-            <y>70</y>
-            <width>47</width>
-            <height>13</height>
+            <y>100</y>
+            <width>71</width>
+            <height>16</height>
            </rect>
           </property>
           <property name="text">
-           <string>Ap theory</string>
+           <string>Core max Ap</string>
           </property>
          </widget>
          <widget class="QLabel" name="SecondaryWindingSelectedlabel">
@@ -932,8 +932,8 @@ number Selected</string>
           </property>
           <property name="geometry">
            <rect>
-            <x>420</x>
-            <y>110</y>
+            <x>430</x>
+            <y>140</y>
             <width>111</width>
             <height>20</height>
            </rect>
@@ -958,13 +958,13 @@ amplitude (A)</string>
           <property name="geometry">
            <rect>
             <x>340</x>
-            <y>110</y>
-            <width>71</width>
-            <height>16</height>
+            <y>140</y>
+            <width>81</width>
+            <height>21</height>
            </rect>
           </property>
           <property name="text">
-           <string>Ap calculated</string>
+           <string>Ap from design</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_3">
@@ -1000,7 +1000,7 @@ Winding number</string>
           <property name="geometry">
            <rect>
             <x>270</x>
-            <y>100</y>
+            <y>110</y>
             <width>51</width>
             <height>20</height>
            </rect>
@@ -1029,8 +1029,8 @@ number</string>
           </property>
           <property name="geometry">
            <rect>
-            <x>420</x>
-            <y>70</y>
+            <x>430</x>
+            <y>100</y>
             <width>111</width>
             <height>20</height>
            </rect>
@@ -1070,7 +1070,7 @@ Selected (mm^2)</string>
           </property>
           <property name="geometry">
            <rect>
-            <x>420</x>
+            <x>430</x>
             <y>20</y>
             <width>111</width>
             <height>20</height>
@@ -1081,7 +1081,7 @@ Selected (mm^2)</string>
           <property name="geometry">
            <rect>
             <x>270</x>
-            <y>140</y>
+            <y>160</y>
             <width>51</width>
             <height>20</height>
            </rect>
@@ -1093,8 +1093,8 @@ Selected (mm^2)</string>
          <widget class="QLabel" name="ApResultLabel">
           <property name="geometry">
            <rect>
-            <x>220</x>
-            <y>240</y>
+            <x>400</x>
+            <y>170</y>
             <width>47</width>
             <height>13</height>
            </rect>
@@ -1227,9 +1227,9 @@ winding material</string>
          <property name="geometry">
           <rect>
            <x>290</x>
-           <y>20</y>
-           <width>251</width>
-           <height>91</height>
+           <y>10</y>
+           <width>261</width>
+           <height>111</height>
           </rect>
          </property>
          <property name="title">
@@ -1331,7 +1331,7 @@ winding material</string>
            <rect>
             <x>120</x>
             <y>70</y>
-            <width>51</width>
+            <width>61</width>
             <height>20</height>
            </rect>
           </property>
@@ -1412,7 +1412,7 @@ permittivity (εr)</string>
            <rect>
             <x>120</x>
             <y>190</y>
-            <width>51</width>
+            <width>61</width>
             <height>20</height>
            </rect>
           </property>
@@ -1438,7 +1438,7 @@ permittivity (εr)</string>
            <rect>
             <x>120</x>
             <y>230</y>
-            <width>51</width>
+            <width>61</width>
             <height>20</height>
            </rect>
           </property>
@@ -1465,7 +1465,7 @@ permittivity (εr)</string>
            <rect>
             <x>120</x>
             <y>270</y>
-            <width>51</width>
+            <width>61</width>
             <height>20</height>
            </rect>
           </property>
@@ -1492,7 +1492,7 @@ permittivity (εr)</string>
            <rect>
             <x>120</x>
             <y>310</y>
-            <width>51</width>
+            <width>61</width>
             <height>20</height>
            </rect>
           </property>
@@ -1519,7 +1519,7 @@ Length [mm]</string>
            <rect>
             <x>120</x>
             <y>350</y>
-            <width>51</width>
+            <width>61</width>
             <height>20</height>
            </rect>
           </property>
@@ -1546,7 +1546,7 @@ area [mm^2]</string>
            <rect>
             <x>120</x>
             <y>390</y>
-            <width>51</width>
+            <width>61</width>
             <height>20</height>
            </rect>
           </property>
@@ -1572,7 +1572,7 @@ area [mm^2]</string>
            <rect>
             <x>120</x>
             <y>430</y>
-            <width>51</width>
+            <width>61</width>
             <height>20</height>
            </rect>
           </property>
@@ -1600,7 +1600,7 @@ area [mm^2]</string>
           <rect>
            <x>590</x>
            <y>610</y>
-           <width>281</width>
+           <width>381</width>
            <height>191</height>
           </rect>
          </property>
@@ -1694,8 +1694,8 @@ section (mm^2)</string>
          <widget class="QLineEdit" name="WireCrossSectionSelectedInductanceValue">
           <property name="geometry">
            <rect>
-            <x>110</x>
-            <y>150</y>
+            <x>290</x>
+            <y>70</y>
             <width>71</width>
             <height>20</height>
            </rect>
@@ -1707,8 +1707,8 @@ section (mm^2)</string>
          <widget class="QLabel" name="PrimaryWireCrossSectionSelectedlabel_2">
           <property name="geometry">
            <rect>
-            <x>10</x>
-            <y>130</y>
+            <x>190</x>
+            <y>50</y>
             <width>101</width>
             <height>51</height>
            </rect>
@@ -1717,6 +1717,71 @@ section (mm^2)</string>
            <string>Wire
 cross section
 Selected (mm^2)</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="ApTheoryLabel_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>150</y>
+            <width>71</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Core max Ap</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="ApTheoryInductanceValue">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>150</y>
+            <width>71</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="ApCalculatedLabel_2">
+          <property name="geometry">
+           <rect>
+            <x>190</x>
+            <y>150</y>
+            <width>91</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Ap from design</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="ApCalculatedInductanceValue">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>290</x>
+            <y>150</y>
+            <width>71</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="ApResultInductanceLabel">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>170</y>
+            <width>47</width>
+            <height>13</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
           </property>
          </widget>
         </widget>

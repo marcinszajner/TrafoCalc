@@ -77,6 +77,9 @@ class TransformerOutputValueClass:
         self.SecondaryWireCrossSection = 0
         self.ApTheory = 0
         self.ApCalculated = 0
+        self.ApTheoryInductance = 0
+        self.ApCalculatedInductance = 0
+
 
 
 class Transformer:
@@ -97,7 +100,6 @@ class Transformer:
             float(string)
             return True
         except:
-            print("Not a float")
             return False
 
     def update_params(self, TransformerValue):
@@ -178,6 +180,18 @@ class Transformer:
         Aw = self.TransformerValue.CoreWindingArea / 1000000
         self.TransformerOutputValue.ApTheory = Ae * Aw
 
+    def Calculate_Ap_inductance(self):
+        Ae = self.TransformerValue.CoreCrossSection / 1000000
+
+        Wa = self.SelectValue(self.TransformerValue.WireCrossSectionInductance,
+                               self.TransformerValue.WireCrossSectionSelectedInductance) / 1000000
+        N = self.TransformerValue.WindingNumInductance
+        k = self.TransformerValue.FillFactor
+
+        self.TransformerOutputValue.ApCalculatedInductance = (Wa*N/k) * Ae
+        Aw = self.TransformerValue.CoreWindingArea / 1000000
+        self.TransformerOutputValue.ApTheoryInductance = Ae * Aw
+
     def validate_input_data_basic_simulation(self):
         if not(self.TransformerValue.InputVoltage > 0.0 and self.TransformerValue.CoreCrossSection > 0.0 and
                self.TransformerValue.OutputVoltage > 0.0 and self.TransformerValue.Bmax > 0.0 and
@@ -193,7 +207,7 @@ class Transformer:
                 self.TransformerValue.SizeE > 0.0 and self.TransformerValue.SizeF):
             raise Exception('incorrect dimension of param')
 
-    def Calculate_inductance(self):
+    def Calculate_inductor_gap_turns_wire_cross_section(self):
         ind = self.TransformerValue.Inductance / 1000
         curr = self.TransformerValue.CurrentMax
         Bmax = self.TransformerValue.Bmax / 1000
