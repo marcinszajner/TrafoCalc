@@ -83,6 +83,7 @@ def test_save_json(TrafoCalc):
     assert TrafoCalc.InductanceValue.text() == str(data['Inductance'])
     assert TrafoCalc.CurrentMaxValue.text() == str(data['CurrentMax'])
     assert TrafoCalc.WindingNumInductanceValue.text() == str(data['WindingNumInductance'])
+    assert TrafoCalc.WindingNumInductanceSelectedValue.text() == str(data['WindingNumInductanceSelected'])
     assert TrafoCalc.GapValue.text() == str(data['Gap'])
     assert TrafoCalc.WireCrossSectionSelectedInductanceValue.text() == str(data['WireCrossSectionSelectedInductance'])
     assert TrafoCalc.WireCrossSectionInductanceValue.text() == str(data['WireCrossSectionInductance'])
@@ -90,8 +91,8 @@ def test_save_json(TrafoCalc):
 
 
 def test_load_json(TrafoCalc):
-    QtCore.QTimer.singleShot(50, lambda: keyboard.write('tests\\qt_tests\\Load_and_save\\example.json'))
-    QtCore.QTimer.singleShot(250, lambda: keyboard.send('enter'))
+    QtCore.QTimer.singleShot(250, lambda: keyboard.write('tests\\qt_tests\\Load_and_save\\example.json'))
+    QtCore.QTimer.singleShot(750, lambda: keyboard.send('enter'))
     TrafoCalc.load_state()
     assert TrafoCalc.InputVoltageValue.text() == '162.0'
     assert TrafoCalc.InputVoltageShapeValue.currentText() == 'Sinus'
@@ -140,6 +141,7 @@ def test_load_json(TrafoCalc):
     assert TrafoCalc.InductanceValue.text() == '0.05'
     assert TrafoCalc.CurrentMaxValue.text() == '10.0'
     assert TrafoCalc.WindingNumInductanceValue.text() == '28.0112'
+    assert TrafoCalc.WindingNumInductanceSelectedValue.text() == '7.0'
     assert TrafoCalc.GapValue.text() == '7.03849'
     assert TrafoCalc.WireCrossSectionSelectedInductanceValue.text() == '0.0'
     assert TrafoCalc.WireCrossSectionInductanceValue.text() == '2.22222'

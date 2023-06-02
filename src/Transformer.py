@@ -59,6 +59,7 @@ class TransformerValueClass:
         self.Inductance = 0
         self.CurrentMax = 0
         self.WindingNumInductance = 0
+        self.WindingNumInductanceSelected = 0;
         self.Gap = 0
         self.WireCrossSectionInductance = 0
         self.WireCrossSectionSelectedInductance = 0
@@ -130,9 +131,13 @@ class Transformer:
         VoltSecond = self.Calculate_VoltSecond()
 
         PrimaryWinding = VoltSecond/(2*Bmax*CoreCrossSection)
+
+        if self.TransformerValue.PrimaryWindingSelected > 0:
+            PrimaryWinding = self.TransformerValue.PrimaryWindingSelected
+
         SecondaryWinding = (OutputVoltage/InputVoltage)*PrimaryWinding
 
-        self.TransformerOutputValue.PrimaryWinding = PrimaryWinding
+        self.TransformerOutputValue.PrimaryWinding = VoltSecond/(2*Bmax*CoreCrossSection)
         self.TransformerOutputValue.SecondaryWinding = SecondaryWinding
 
     def Calculate_magnetization_current(self):
@@ -185,7 +190,9 @@ class Transformer:
 
         Wa = self.SelectValue(self.TransformerValue.WireCrossSectionInductance,
                                self.TransformerValue.WireCrossSectionSelectedInductance) / 1000000
-        N = self.TransformerValue.WindingNumInductance
+        N = self.SelectValue(self.TransformerValue.WindingNumInductance,
+                               self.TransformerValue.WindingNumInductanceSelected)
+
         k = self.TransformerValue.FillFactor
 
         self.TransformerOutputValue.ApCalculatedInductance = (Wa*N/k) * Ae
@@ -221,11 +228,18 @@ class Transformer:
 
         cross_section = curr / curr_dens
 
+
         for x in range(10):
             N = (ind * curr) / (Ae * Bmax)
             lg = ((uo * N * curr) / Bmax) - CoreRelu
             Ae = (SizeC + lg) * (SizeF + lg) / 1000000
+        self.TransformerValue.WindingNumInductance = N
+
+        if self.TransformerValue.WindingNumInductanceSelected > 0:
+            N = self.TransformerValue.WindingNumInductanceSelected
+            for x in range(10):
+                lg = N*N*(uo*Ae)/ind - CoreRelu
+                Ae = (SizeC + lg) * (SizeF + lg) / 1000000
 
         self.TransformerValue.Gap = lg * 1000
-        self.TransformerValue.WindingNumInductance = N
         self.TransformerValue.PrimaryWireCrossSectionInductance = cross_section

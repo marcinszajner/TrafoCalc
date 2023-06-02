@@ -1784,6 +1784,33 @@ Selected (mm^2)</string>
            <string/>
           </property>
          </widget>
+         <widget class="QLineEdit" name="WindingNumInductanceSelectedValue">
+          <property name="geometry">
+           <rect>
+            <x>290</x>
+            <y>30</y>
+            <width>71</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="WindingNumInductanceSelectedLabel">
+          <property name="geometry">
+           <rect>
+            <x>190</x>
+            <y>20</y>
+            <width>91</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Winding
+number selected</string>
+          </property>
+         </widget>
         </widget>
        </widget>
       </item>

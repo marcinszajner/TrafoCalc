@@ -46,8 +46,21 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
                 setattr(transformer_value, key, main_menu_transformer_values.currentText())
         return transformer_value
 
+    def colour_used_select_value(self, element, SelectedColour, DeselectedColour):
+        if element.text():
+            if float(element.text()):
+                element.setPalette(SelectedColour)
+            else:
+                element.setPalette(DeselectedColour)
+        else:
+            element.setPalette(DeselectedColour)
+
     def run_calc(self):
         #try:
+            SelectedColour = QPalette()
+            DeselectedColour = QPalette()
+            SelectedColour.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Base, QColor(51, 240, 65))
+            DeselectedColour.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Base, QColor(255, 255, 255))
             transformer_value = self.parse_main_window_value_to_transformer_class()
             self.Transformer.update_params(transformer_value)
             if self.Transformer.TransformerValue.ModelType == 'Magnetic field simulation' or \
@@ -59,19 +72,12 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
                 self.Transformer.Calculate_wire_cross_section()
                 self.Transformer.Calculate_Ap()
 
-                SelectedColour = QPalette()
-                DeselectedColour = QPalette()
-                SelectedColour.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Base, QColor(51, 240, 65))
-                DeselectedColour.setColor(QPalette.ColorGroup.Normal, QPalette.ColorRole.Base, QColor(255, 255, 255))
-                if float(self.PrimaryWindingSelectedValue.text()) > 0:
-                    self.PrimaryWindingSelectedValue.setPalette(SelectedColour)
-                else:
-                    self.PrimaryWindingSelectedValue.setPalette(DeselectedColour)
-
-                if float(self.PrimaryWindingSelectedValue.text()):
-                    self.PrimaryWindingSelectedValue.setPalette(SelectedColour)
-                else:
-                    self.PrimaryWindingSelectedValue.setPalette(DeselectedColour)
+                self.colour_used_select_value(self.PrimaryWindingSelectedValue, SelectedColour, DeselectedColour)
+                self.colour_used_select_value(self.SecondaryWindingSelectedValue, SelectedColour, DeselectedColour)
+                self.colour_used_select_value(self.PrimaryWireCrossSectionSelectedValue, SelectedColour,
+                                              DeselectedColour)
+                self.colour_used_select_value(self.SecondaryWireCrossSectionSelectedValue, SelectedColour,
+                                              DeselectedColour)
 
                 transformer_output_value = self.Transformer.TransformerOutputValue
                 a = vars(transformer_output_value)
@@ -115,6 +121,11 @@ class MainClass(QMainWindow, gui.Ui_MainWindow):
                                             QColor(51, 240, 65))
                     self.ApResultInductanceLabel.setText('Pass')
                 self.ApResultInductanceLabel.setPalette(result_palette)
+
+                self.colour_used_select_value(self.WindingNumInductanceSelectedValue, SelectedColour,
+                                              DeselectedColour)
+                self.colour_used_select_value(self.WireCrossSectionSelectedInductanceValue, SelectedColour,
+                                              DeselectedColour)
 
         #except Exception as inst:
         #    print(inst.args)

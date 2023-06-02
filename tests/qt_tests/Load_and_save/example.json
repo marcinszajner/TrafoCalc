@@ -47,6 +47,7 @@
     "Inductance": 0.05,
     "CurrentMax": 10.0,
     "WindingNumInductance": 28.0112,
+    "WindingNumInductanceSelected": 7.0,
     "Gap": 7.03849,
     "WireCrossSectionInductance": 2.22222,
     "WireCrossSectionSelectedInductance": 0.0,

@@ -239,7 +239,10 @@ class FEMMMagneticInductorFormat:
         #     windingNum = input_data.PrimaryWindingSelected
         # else:
         #     windingNum = output_data.PrimaryWinding
-        windingNum = int(input_data.WindingNumInductance)
+        if int(input_data.WindingNumInductanceSelected) > 0:
+            windingNum = int(input_data.WindingNumInductanceSelected)
+        else:
+            windingNum = int(input_data.WindingNumInductance)
 
         y_up -= BobbinY1
         y_down += BobbinY2
