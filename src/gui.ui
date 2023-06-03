@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1102</width>
-    <height>955</height>
+    <width>1274</width>
+    <height>793</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
-      <width>1081</width>
+      <y>40</y>
+      <width>1261</width>
       <height>851</height>
      </rect>
     </property>
@@ -210,8 +210,8 @@
           <rect>
            <x>250</x>
            <y>200</y>
-           <width>801</width>
-           <height>301</height>
+           <width>811</width>
+           <height>291</height>
           </rect>
          </property>
          <property name="title">
@@ -470,8 +470,8 @@ dimensions</string>
            <rect>
             <x>200</x>
             <y>10</y>
-            <width>261</width>
-            <height>281</height>
+            <width>241</width>
+            <height>261</height>
            </rect>
           </property>
           <property name="text">
@@ -515,7 +515,7 @@ dimensions</string>
             <x>590</x>
             <y>10</y>
             <width>201</width>
-            <height>281</height>
+            <height>261</height>
            </rect>
           </property>
           <property name="text">
@@ -529,10 +529,10 @@ dimensions</string>
         <widget class="QGroupBox" name="InsulationGroup">
          <property name="geometry">
           <rect>
-           <x>640</x>
-           <y>0</y>
+           <x>650</x>
+           <y>10</y>
            <width>411</width>
-           <height>201</height>
+           <height>181</height>
           </rect>
          </property>
          <property name="title">
@@ -542,7 +542,7 @@ dimensions</string>
           <property name="geometry">
            <rect>
             <x>340</x>
-            <y>160</y>
+            <y>140</y>
             <width>61</width>
             <height>20</height>
            </rect>
@@ -555,7 +555,7 @@ dimensions</string>
           <property name="geometry">
            <rect>
             <x>270</x>
-            <y>30</y>
+            <y>10</y>
             <width>61</width>
             <height>31</height>
            </rect>
@@ -569,7 +569,7 @@ permittivity</string>
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>120</y>
+            <y>100</y>
             <width>71</width>
             <height>41</height>
            </rect>
@@ -583,7 +583,7 @@ Insulation</string>
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>60</y>
+            <y>40</y>
             <width>71</width>
             <height>31</height>
            </rect>
@@ -597,7 +597,7 @@ material</string>
           <property name="geometry">
            <rect>
             <x>270</x>
-            <y>160</y>
+            <y>140</y>
             <width>51</width>
             <height>20</height>
            </rect>
@@ -610,7 +610,7 @@ material</string>
           <property name="geometry">
            <rect>
             <x>340</x>
-            <y>40</y>
+            <y>20</y>
             <width>47</width>
             <height>13</height>
            </rect>
@@ -623,7 +623,7 @@ material</string>
           <property name="geometry">
            <rect>
             <x>340</x>
-            <y>100</y>
+            <y>80</y>
             <width>61</width>
             <height>20</height>
            </rect>
@@ -636,7 +636,7 @@ material</string>
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>150</y>
+            <y>130</y>
             <width>81</width>
             <height>41</height>
            </rect>
@@ -650,7 +650,7 @@ Insulation</string>
           <property name="geometry">
            <rect>
             <x>160</x>
-            <y>50</y>
+            <y>30</y>
             <width>47</width>
             <height>13</height>
            </rect>
@@ -663,7 +663,7 @@ Insulation</string>
           <property name="geometry">
            <rect>
             <x>270</x>
-            <y>130</y>
+            <y>110</y>
             <width>51</width>
             <height>20</height>
            </rect>
@@ -676,7 +676,7 @@ Insulation</string>
           <property name="geometry">
            <rect>
             <x>120</x>
-            <y>70</y>
+            <y>50</y>
             <width>131</width>
             <height>20</height>
            </rect>
@@ -689,7 +689,7 @@ Insulation</string>
           <property name="geometry">
            <rect>
             <x>120</x>
-            <y>100</y>
+            <y>80</y>
             <width>131</width>
             <height>20</height>
            </rect>
@@ -702,7 +702,7 @@ Insulation</string>
           <property name="geometry">
            <rect>
             <x>270</x>
-            <y>100</y>
+            <y>80</y>
             <width>51</width>
             <height>20</height>
            </rect>
@@ -715,7 +715,7 @@ Insulation</string>
           <property name="geometry">
            <rect>
             <x>340</x>
-            <y>130</y>
+            <y>110</y>
             <width>61</width>
             <height>20</height>
            </rect>
@@ -728,7 +728,7 @@ Insulation</string>
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>90</y>
+            <y>70</y>
             <width>101</width>
             <height>31</height>
            </rect>
@@ -742,7 +742,7 @@ insulation material</string>
           <property name="geometry">
            <rect>
             <x>270</x>
-            <y>70</y>
+            <y>50</y>
             <width>51</width>
             <height>20</height>
            </rect>
@@ -755,7 +755,7 @@ insulation material</string>
           <property name="geometry">
            <rect>
             <x>120</x>
-            <y>130</y>
+            <y>110</y>
             <width>131</width>
             <height>20</height>
            </rect>
@@ -768,7 +768,7 @@ insulation material</string>
           <property name="geometry">
            <rect>
             <x>120</x>
-            <y>160</y>
+            <y>140</y>
             <width>131</width>
             <height>20</height>
            </rect>
@@ -781,8 +781,8 @@ insulation material</string>
         <widget class="QGroupBox" name="output">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>600</y>
+           <x>250</x>
+           <y>490</y>
            <width>571</width>
            <height>201</height>
           </rect>
@@ -1107,8 +1107,8 @@ Selected (mm^2)</string>
         <widget class="QGroupBox" name="AdditionalGroup">
          <property name="geometry">
           <rect>
-           <x>250</x>
-           <y>500</y>
+           <x>290</x>
+           <y>110</y>
            <width>341</width>
            <height>91</height>
           </rect>
@@ -1229,7 +1229,7 @@ winding material</string>
            <x>290</x>
            <y>10</y>
            <width>261</width>
-           <height>111</height>
+           <height>91</height>
           </rect>
          </property>
          <property name="title">
@@ -1598,10 +1598,10 @@ area [mm^2]</string>
         <widget class="QGroupBox" name="InductorOutputBox_2">
          <property name="geometry">
           <rect>
-           <x>590</x>
-           <y>610</y>
+           <x>830</x>
+           <y>490</y>
            <width>381</width>
-           <height>191</height>
+           <height>201</height>
           </rect>
          </property>
          <property name="title">
@@ -1872,8 +1872,8 @@ FEMM model</string>
    <widget class="QCheckBox" name="SimplifiedWireModelValue">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>60</y>
+      <x>830</x>
+      <y>10</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -1889,7 +1889,7 @@ wire model</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1102</width>
+     <width>1274</width>
      <height>21</height>
     </rect>
    </property>
