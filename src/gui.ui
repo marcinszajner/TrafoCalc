@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1102</width>
-    <height>955</height>
+    <width>1274</width>
+    <height>863</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
-      <width>1081</width>
+      <y>60</y>
+      <width>1261</width>
       <height>851</height>
      </rect>
     </property>
@@ -209,7 +209,7 @@
          <property name="geometry">
           <rect>
            <x>250</x>
-           <y>200</y>
+           <y>230</y>
            <width>801</width>
            <height>301</height>
           </rect>
@@ -529,8 +529,8 @@ dimensions</string>
         <widget class="QGroupBox" name="InsulationGroup">
          <property name="geometry">
           <rect>
-           <x>640</x>
-           <y>0</y>
+           <x>650</x>
+           <y>20</y>
            <width>411</width>
            <height>201</height>
           </rect>
@@ -781,8 +781,8 @@ insulation material</string>
         <widget class="QGroupBox" name="output">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>600</y>
+           <x>250</x>
+           <y>540</y>
            <width>571</width>
            <height>201</height>
           </rect>
@@ -1107,8 +1107,8 @@ Selected (mm^2)</string>
         <widget class="QGroupBox" name="AdditionalGroup">
          <property name="geometry">
           <rect>
-           <x>250</x>
-           <y>500</y>
+           <x>290</x>
+           <y>130</y>
            <width>341</width>
            <height>91</height>
           </rect>
@@ -1598,10 +1598,10 @@ area [mm^2]</string>
         <widget class="QGroupBox" name="InductorOutputBox_2">
          <property name="geometry">
           <rect>
-           <x>590</x>
-           <y>610</y>
+           <x>840</x>
+           <y>540</y>
            <width>381</width>
-           <height>191</height>
+           <height>201</height>
           </rect>
          </property>
          <property name="title">
@@ -1872,8 +1872,8 @@ FEMM model</string>
    <widget class="QCheckBox" name="SimplifiedWireModelValue">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>60</y>
+      <x>830</x>
+      <y>10</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -1889,7 +1889,7 @@ wire model</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1102</width>
+     <width>1274</width>
      <height>21</height>
     </rect>
    </property>
